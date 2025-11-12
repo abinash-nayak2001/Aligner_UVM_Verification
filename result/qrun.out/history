@@ -1,3 +1,0 @@
-- Entry: 1
-  Time: Mon Nov  3 03:45:01 2025
-  Command: qrun -batch -access=rw+/. -uvmhome uvm-1.2 -timescale 1ns/1ns -mfcu design.sv testbench.sv -voptargs=+acc=npr +UVM_TESTNAME=cfs_algn_test_random +UVM_MAX_QUIT_COUNT=1 -do ' run -all; exit' 

@@ -1,3 +1,0 @@
-  CREATE_STREAM @100 {NAME:seq T:Transactions SCOPE:uvm_test_top.env.virtual_sequencer STREAM:1682}
-  CREATE_STREAM @100 {NAME:seq T:Transactions SCOPE:uvm_test_top.env.md_tx_agent.sequencer STREAM:1691}
-  CREATE_STREAM @395 {NAME:seq T:Transactions SCOPE:uvm_test_top.env.md_rx_agent.sequencer STREAM:1805}
