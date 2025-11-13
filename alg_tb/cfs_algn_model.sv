@@ -52,6 +52,8 @@
     //Buffered value of the expected interrupt request
     protected bit exp_irq;
 
+    // Interger to keep track of no. of bytes currently present in buffer.
+    local int unsigned n_bytes;
     
     //Pointer to the process of the task push_to_rx_fifo()
     local process process_push_to_rx_fifo;
@@ -472,14 +474,13 @@
         begin
           fork
             begin
-              //@(posedge vif.clk iff(vif.tx_fifo_push)); 
-              if(vif.tx_fifo_push)
-              	@(posedge vif.clk);
+              @(posedge vif.clk iff(vif.tx_fifo_push)); 
+             // if(vif.tx_fifo_push)
+              	//@(posedge vif.clk);
             end
             begin
               repeat(10) begin
                  @(posedge vif.clk iff(reg_block.STATUS.TX_LVL.get_mirrored_value() < tx_fifo_depth)); 
-                 $display("55555555555555555555555");
               end
               
               `uvm_warning("DUT_WARNING", "TX FIFO push did NOT synchronize with RTL")
@@ -489,7 +490,6 @@
           disable fork;
         end
       join
-      `uvm_info("MODEL DEBUG","SUCCESSFULLY PUSHED TO TX_FIFO SYNCHRONOUS",UVM_LOW)
     endtask
     
     //Task for trying to synchronize a pop from TX FIFO with RTL
@@ -561,7 +561,6 @@
       `uvm_info("TX_FIFO", $sformatf("TX FIFO push - new level: %0d, pushed entry: %0s",
                                    reg_block.STATUS.TX_LVL.get_mirrored_value(),
                                      item.convert2string()), UVM_LOW)
-      `uvm_info("MODEL DEBUG",$sformatf("SIZE OF BUFFER AFTER TX_FIFO PUSH: %0d",buffer.size()),UVM_LOW)
     endtask
     
     //Task to pop from TX FIFO the aligned data
@@ -589,7 +588,7 @@
           cfs_md_item_mon rx_item;
           pop_from_rx_fifo(rx_item);
           buffer.push_back(rx_item);
-          `uvm_info("MODEL DEBUG","SUCCESSFULLY PUSHED NEW ITEM TO BUFFER",UVM_LOW)
+          n_bytes = n_bytes + rx_item.data.size();
         end
         else begin
           @(posedge vif.clk);
@@ -606,20 +605,18 @@
         int unsigned ctrl_offset = reg_block.CTRL.OFFSET.get_mirrored_value();
         int unsigned buffer_size;
         buffer_size = (buffer.sum() with (item.data.size()));
-        uvm_wait_for_nba_region();
-        if(ctrl_size <= buffer_size) begin
-          while(ctrl_size <= buffer_size) begin
+        
+       	uvm_wait_for_nba_region();
+        if(ctrl_size <= n_bytes) begin
+          while(ctrl_size <= n_bytes) begin
           	cfs_md_item_mon tx_item = cfs_md_item_mon::type_id::create("tx_item", this);
-          	foreach(buffer[i])
-				$display("========%0p=======", buffer[i].data);          
           	tx_item.offset = ctrl_offset;
           	
             void'(tx_item.begin_tr(buffer[0].get_begin_time()));
             
-            while(tx_item.data.size() != ctrl_size) begin//{
+            while(tx_item.data.size() != ctrl_size) begin
               cfs_md_item_mon buffer_item = buffer.pop_front();
-              
-              
+              n_bytes = n_bytes - buffer_item.data.size();
               if(tx_item.data.size() + buffer_item.data.size() <= ctrl_size) begin
                 
                 foreach(buffer_item.data[idx]) begin
@@ -631,8 +628,8 @@
                   push_to_tx_fifo(tx_item);
                   buffer_size = (buffer.sum() with (item.data.size()));
                 end
-              end 
-              else begin//{
+              end
+              else begin
                 int unsigned num_bytes_needed = ctrl_size - tx_item.data.size();
                 
                 cfs_md_item_mon splitted_items[$];
@@ -640,9 +637,11 @@
                 split(num_bytes_needed, buffer_item, splitted_items);
                 
                 buffer.push_front(splitted_items[1]);
+                n_bytes = n_bytes + splitted_items[1].data.size();
                 buffer.push_front(splitted_items[0]);
+                n_bytes = n_bytes + splitted_items[0].data.size();
                 
-                begin//{
+                begin
                   cfs_algn_split_info info = cfs_algn_split_info::type_id::create("info", this);
                   
                   info.ctrl_offset         = ctrl_offset;
@@ -652,15 +651,15 @@
                   info.num_bytes_needed    = num_bytes_needed;
                   
                   port_out_split_info.write(info);
-                end//}
-              end//}
-            end//}
+                end
+              end
+            end
           end
         end
         else begin
           @(posedge vif.clk);
         end
-      end 
+      end
     endtask
     
     //Function to split an item in two
@@ -708,7 +707,6 @@
       
       forever begin
         pop_from_tx_fifo(item);
-        $display("66666666666666666666666666666");
         port_out_tx.write(item);
         
         tx_complete.wait_trigger();
@@ -821,7 +819,7 @@
      
     
     virtual function void write_in_rx(cfs_md_item_mon item_mon);
-      if(item_mon.in_tr) begin
+      if(item_mon.in_tr == 1) begin
         cfs_md_response exp_response = get_exp_response(item_mon);
         
         case(exp_response)

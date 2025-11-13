@@ -39,7 +39,7 @@
 				reg_config_seq.start(env.virtual_sequencer);
 				//
 				rx_seq = cfs_md_sequence_simple_master::type_id::create("rx_seq");
-				repeat(1)
+				repeat(10)
 				begin
 					rx_seq.start(env.md_rx_agent.sequencer);
 				end

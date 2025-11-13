@@ -256,7 +256,6 @@
     virtual function void write_in_agent_tx(cfs_md_item_mon item_mon);
       if(item_mon.in_tr == 0) begin
         cfs_md_item_mon exp_item = exp_tx_items.pop_front();
-        $display("============%0b============",item_mon.in_tr);
         
         process_exp_tx_item_watchdog[0].kill();
         
