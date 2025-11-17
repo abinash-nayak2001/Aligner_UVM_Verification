@@ -172,8 +172,7 @@
           process p = process::self();
           
           process_exp_tx_item_watchdog.push_back(p);
-          `uvm_info("SCO DEBUG","PUSHED A WACHDOG PROCESS TO EXP_TX",UVM_LOW)
-          
+          `uvm_info("SCO DEBUG","PUSHED A WATCHDOG PROCESS TO EXP_TX",UVM_LOW)
           exp_tx_item_watchdog(item_mon);
           
           if(process_exp_tx_item_watchdog.size() == 0) begin
@@ -221,7 +220,7 @@
       end 
       
       exp_tx_items.push_back(item_mon);
-      `uvm_info("SCO DEBUG","PUSHED A WACHDOG PROCESS TO EXP_TX",UVM_LOW)
+      `uvm_info("SCO DEBUG","PUSHED AN ITEM TO EXP_TX",UVM_LOW)
       exp_tx_item_watchdog_nb(item_mon);
     endfunction
 
@@ -256,7 +255,6 @@
     virtual function void write_in_agent_tx(cfs_md_item_mon item_mon);
       if(item_mon.in_tr == 0) begin
         cfs_md_item_mon exp_item = exp_tx_items.pop_front();
-        
         process_exp_tx_item_watchdog[0].kill();
         
         void'(process_exp_tx_item_watchdog.pop_front());

@@ -107,7 +107,7 @@
       predictor.env_config = env_config;
       
       model.env_config = env_config;
-      
+      virtual_sequencer.env_config = env_config;
       
       //Pass the information from the MD agents to the model
       md_rx_agent.monitor.output_port.connect(model.port_in_rx);

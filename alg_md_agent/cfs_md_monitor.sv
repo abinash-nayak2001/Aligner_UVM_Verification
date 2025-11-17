@@ -70,7 +70,7 @@ class cfs_md_monitor#(int unsigned DATA_WIDTH = 32) extends uvm_ext_monitor#(.VI
         end
 
         item.response = cfs_md_response'(vif.err);
-
+        
         end_tr(item);
         item.in_tr = 0;
         

@@ -1,2 +1,2 @@
-var g_data = {"9":["work.cfs_algn_pkg",50.00,1],"14":["work.cfs_aligner_core",100.00,1],"7":["work.cfs_apb_if",93.33,1],"8":["work.cfs_apb_pkg",37.44,1],"2":["work.cfs_md_if",92.30,1],"6":["work.cfs_md_pkg",74.87,1],"17":["work.cfs_synch_fifo",100.00,1],"5":["work.uvm_ext_pkg",100.00,1]};
+var g_data = {"9":["work.cfs_algn_pkg",81.57,1],"14":["work.cfs_aligner_core",100.00,1],"7":["work.cfs_apb_if",93.33,1],"8":["work.cfs_apb_pkg",39.52,1],"2":["work.cfs_md_if",92.30,1],"6":["work.cfs_md_pkg",62.46,1],"17":["work.cfs_synch_fifo",100.00,1],"5":["work.uvm_ext_pkg",100.00,1]};
 processDuLinks(g_data);

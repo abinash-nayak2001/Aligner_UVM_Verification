@@ -425,6 +425,7 @@
           fork
             begin
               @(posedge vif.clk iff(vif.rx_fifo_push)); 
+              
             end
             begin
               repeat(10) begin
@@ -444,7 +445,6 @@
     protected virtual task sync_pop_from_rx_fifo();
       cfs_algn_vif vif = env_config.get_vif();
       int tx_fifo_depth = tx_fifo.size();
-      
       fork
         begin
           fork
@@ -553,7 +553,6 @@
       sync_push_to_tx_fifo();
       
       tx_fifo.put(item);
-      
       kill_set_tx_fifo_empty();
       
       inc_tx_lvl();
@@ -584,7 +583,7 @@
       
       forever begin
         int unsigned ctrl_size   = reg_block.CTRL.SIZE.get_mirrored_value();
-        if((buffer.sum() with (item.data.size())) <= ctrl_size) begin
+        if(n_bytes <= ctrl_size) begin
           cfs_md_item_mon rx_item;
           pop_from_rx_fifo(rx_item);
           buffer.push_back(rx_item);

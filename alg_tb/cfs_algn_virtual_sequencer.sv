@@ -22,6 +22,9 @@
     //Reference to the model
     cfs_algn_model model;
     
+    // Config file to get data_width
+    cfs_algn_env_config env_config;
+    
     `uvm_component_utils(cfs_algn_virtual_sequencer)
     
     function new(string name = "", uvm_component parent);

@@ -6,11 +6,10 @@
 		
 		vs_alg_legal_config_random_vseqs reg_config_seq;
 		cfs_md_sequence_slave_response_forever tx_seq;
-		//
-		cfs_md_sequence_simple_master rx_seq;
-		//
-		cfs_algn_seq_reg_config seq1;
-		int unsigned no_of_trans = 1;
+		vs_alg_legal_rx_random_vseqs rx_seq;
+		int unsigned n_bytes_in_buffer = 0;
+		int unsigned no_of_reg_trans = 30;
+		int unsigned no_of_rx_trans = 30;
 		
 		function new(string name = "vs_alg_legal_reg_rx_test", uvm_component parent = null);
 			super.new(name,parent);
@@ -31,25 +30,35 @@
 				end
 			join_none
 			
-			repeat(no_of_trans)
+			repeat(no_of_reg_trans)
 			begin
 				reg_config_seq = vs_alg_legal_config_random_vseqs::type_id::create("reg_config_seq");
 				reg_config_seq.block = env.model.reg_block;
 			
 				reg_config_seq.start(env.virtual_sequencer);
-				//
-				rx_seq = cfs_md_sequence_simple_master::type_id::create("rx_seq");
-				repeat(10)
+				
+				rx_seq = vs_alg_legal_rx_random_vseqs::type_id::create("rx_seq");
+				n_bytes_in_buffer = 0;
+				repeat(no_of_rx_trans)
 				begin
-					rx_seq.start(env.md_rx_agent.sequencer);
+					do begin
+						rx_seq.start(env.virtual_sequencer);
+						n_bytes_in_buffer = n_bytes_in_buffer + rx_seq.seq.item.data.size();
+						$display("=========%0d=========",n_bytes_in_buffer);
+					end while(n_bytes_in_buffer%(reg_config_seq.block.CTRL.SIZE.get_mirrored_value()) != 0);
 				end
-				//
 				#50;
 			end
 			
 			phase.phase_done.set_drain_time(this,500);
 			phase.drop_objection(this, "TEST_DONE");
 		endtask
+		
+		virtual function void report_phase(uvm_phase phase);
+			super.report_phase(phase);
+			$display("***** OVERALL FUNCTIONAL COVERAGE : %0.2f%% *****",$get_coverage());
+		endfunction
+		
 	endclass
 	
 `endif

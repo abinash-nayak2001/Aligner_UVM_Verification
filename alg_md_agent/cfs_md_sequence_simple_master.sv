@@ -7,16 +7,16 @@ class cfs_md_sequence_simple_master extends cfs_md_sequence_base_master;
     rand cfs_md_item_drv_master item;
   
     //Bus data_width - used for simulators not supporting functions in constraints
-    local int unsigned data_width;
+    //local int unsigned data_width;
     
-    constraint item_hard {
+    /*constraint item_hard {
       item.data.size() > 0;
       item.data.size() <= data_width / 8;
       
       item.offset      <  data_width / 8;
       
       item.data.size() + item.offset <= data_width / 8;
-    }
+    }*/
     
     `uvm_object_utils(cfs_md_sequence_simple_master)
     
@@ -34,10 +34,10 @@ class cfs_md_sequence_simple_master extends cfs_md_sequence_base_master;
     //endfunction
     
     virtual task body();
-    	data_width = p_sequencer.get_data_width();
+    	//data_width = p_sequencer.get_data_width();
 
-      assert(item.randomize() with {data.size() > 0; data.size != 3; data.size() <= data_width / 8; item.offset < data_width / 8; data.size() + offset <= data_width / 8;}) else
-      	`uvm_error("RX_SEQ","RANDOMIZATION FAILED")
+      /*assert(item.randomize() with {data.size() > 0; data.size != 3; data.size() <= data_width / 8; item.offset < data_width / 8; data.size() + offset <= data_width / 8;}) else
+      	`uvm_error("RX_SEQ","RANDOMIZATION FAILED")*/
       `uvm_send(item)
     endtask
 endclass

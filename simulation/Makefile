@@ -60,7 +60,7 @@ sv_cmp_Questa:
 	vlog -work $(work) $(RTL) $(INC) $(SVTB2) $(SVTB3) $(SVTB4) $(SVTB5) $(SVTB6) $(SVTB7) $(SVTB1)
 	
 run_test_Questa:  clean sv_cmp
-	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH1)  -wlf wave_file1.wlf -l test1.log  -sv_seed 1947492539 work.top +UVM_TESTNAME=vs_alg_legal_reg_rx_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
+	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH1)  -wlf wave_file1.wlf -l test1.log -sv_seed 2629596944 work.top +UVM_TESTNAME=vs_alg_legal_reg_rx_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov1
 	
 run_test1_Questa:
