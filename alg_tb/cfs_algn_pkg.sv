@@ -41,6 +41,7 @@
     
     `include "vs_alg_legal_config_random_vseqs.sv"
     `include "vs_alg_legal_rx_random_vseqs.sv"
+    `include "vs_alg_empty_tx_vseqs.sv"
 
   endpackage
 

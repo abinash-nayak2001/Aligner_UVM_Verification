@@ -10,7 +10,7 @@
   class cfs_algn_env_config extends uvm_component;
     
     //Virtual interface
-    protected cfs_algn_vif vif;
+    cfs_algn_vif vif;
     
     //Switch to enable checks
     local bit has_checks;
