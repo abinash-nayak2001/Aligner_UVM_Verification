@@ -52,6 +52,8 @@ regress : regress_$(SIMULATOR)
 report : report_$(SIMULATOR)
 cov : cov_$(SIMULATOR)
 
+regress1 : regress1_$(SIMULATOR)
+
 # ----------------------------- Start of Definitions for Mentor's Questa Specific Targets -------------------------------#
 
 sv_cmp_Questa:
@@ -92,6 +94,10 @@ report_Questa:
 	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov
 
 regress_Questa: clean_Questa run_test_Questa run_test1_Questa run_test2_Questa run_test3_Questa report_Questa cov_Questa
+
+regress1_Questa: clean_Questa run_test_Questa run_test1_Questa
+	vcover merge vs_alg_cov vs_alg_cov1 vs_alg_cov2
+	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov
 
 cov_Questa:
 	firefox covhtmlreport/index.html&
