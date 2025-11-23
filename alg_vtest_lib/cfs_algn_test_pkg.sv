@@ -22,6 +22,7 @@
     `include "cfs_algn_test_random_rx_err.sv"
     
     `include "vs_alg_legal_reg_rx_test.sv"
+    `include "vs_alg_mid_reset_test.sv"
 
   endpackage
 

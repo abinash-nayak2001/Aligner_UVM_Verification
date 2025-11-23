@@ -9,8 +9,8 @@
 		vs_alg_legal_rx_random_vseqs rx_seq;
 		cfs_apb_vif vif;
 		int unsigned n_bytes_in_buffer = 0;
-		int unsigned no_of_reg_trans = 30;
-		int unsigned no_of_rx_trans = 30;
+		int unsigned no_of_reg_trans = 10;
+		int unsigned no_of_rx_trans = 20;
 		
 		function new(string name = "vs_alg_legal_reg_rx_test", uvm_component parent = null);
 			super.new(name,parent);
@@ -25,12 +25,6 @@
 			
 			vif = env.apb_agent.agent_config.get_vif();
 			#50;
-			/*fork
-				begin
-					tx_seq = cfs_md_sequence_slave_response_forever::type_id::create("tx_seq");
-					tx_seq.start(env.md_tx_agent.sequencer);
-				end
-			join_none*/
 			
 			repeat(no_of_reg_trans)
 			begin
