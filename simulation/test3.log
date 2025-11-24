@@ -1,8 +1,6 @@
 # vsim -cvgperinstance -vopt -voptargs="+acc" -coverage -sva -c -do " log -r /* ;coverage save -onexit vs_alg_cov3;run -all; exit" -wlf wave_file3.wlf -l test3.log -sv_seed random work.top "+UVM_TESTNAME=vs_alg_err_reg_test" "+UVM_MAX_QUIT_COUNT=1" "+UVM_VERBOSITY=UVM_LOW" -f message.f 
-# Start time: 21:31:04 on Nov 23,2025
-# ** Note: (vsim-3812) Design is being optimized...
-# ** Warning: ../alg_md_agent/cfs_md_sequencer_base.sv(12): (vopt-2250) Function "get_data_width" has no return value assignment.
-# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Start time: 17:23:16 on Nov 24,2025
+# ** Note: (vsim-8009) Loading existing optimized design _opt
 # //  Questa Sim-64
 # //  Version 2021.2_1 linux_x86_64 May 15 2021
 # //
@@ -45,7 +43,7 @@
 # Loading work.cfs_edge_detect(fast__1)
 # Loading /home/abinashnayak/Downloads/questasim/uvm-1.1d/linux_x86_64/uvm_dpi.so
 # ** Warning: (vsim-8634) Code was not compiled with coverage options.
-# Sv_Seed = 304456054
+# Sv_Seed = 4236796150
 #  log -r /* 
 # coverage save -onexit vs_alg_cov3
 # run -all
@@ -72,9 +70,9 @@
 # UVM_INFO @ 0: reporter [RNTST] Running test vs_alg_err_reg_test...
 # UVM_INFO @ 0: reporter [MAXQUITSET] '+UVM_MAX_QUIT_COUNT=1' provided on the command line is being applied.
 # ** Warning: (vsim-12051) Illegal assignment in cast to class work.cfs_md_pkg::cfs_md_sequencer_base_master from class work.uvm_ext_pkg::uvm_ext_sequencer #(class work.cfs_md_pkg::cfs_md_item_drv_master)
-#    Time: 0 ns  Iteration: 15  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_7fefe44630a File: ../alg_tb/cfs_algn_env.sv Line: 129
+#    Time: 0 ns  Iteration: 15  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_7fefe44855d File: ../alg_tb/cfs_algn_env.sv Line: 129
 # ** Warning: (vsim-12051) Illegal assignment in cast to class work.cfs_md_pkg::cfs_md_sequencer_base_slave from class work.uvm_ext_pkg::uvm_ext_sequencer #(class work.cfs_md_pkg::cfs_md_item_drv_slave)
-#    Time: 0 ns  Iteration: 15  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_7fefe44630a File: ../alg_tb/cfs_algn_env.sv Line: 130
+#    Time: 0 ns  Iteration: 15  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_7fefe44855d File: ../alg_tb/cfs_algn_env.sv Line: 130
 # UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
 # --------------------------------------------------------------------------------
 # Name                          Type                                   Size  Value
@@ -183,23 +181,127 @@
 #       num_last_rsps           integral                               32    'd1  
 # --------------------------------------------------------------------------------
 # 
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 50: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_READ, addr: 7cf5, pre_drive_delay: 0, post_drive_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 75: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_READ, addr: 7cf5, data: 0, response: CFS_APB_ERR, length: 3, prev_item_delay: 2
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 115: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10207, pre_drive_delay: 0, post_drive_delay: 0
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 155: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10207, response: CFS_APB_ERR, length: 4, prev_item_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 155: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_WRITE, addr: 242e, data: 850151ff, pre_drive_delay: 0, post_drive_delay: 0
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 185: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 242e, data: 850151ff, response: CFS_APB_ERR, length: 3, prev_item_delay: 0
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 185: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_WRITE, addr: 8d66, data: f6ce9e77, pre_drive_delay: 3, post_drive_delay: 1
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 245: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 8d66, data: f6ce9e77, response: CFS_APB_ERR, length: 3, prev_item_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 255: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_READ, addr: cc4e, pre_drive_delay: 4, post_drive_delay: 0
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 325: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_READ, addr: cc4e, data: 0, response: CFS_APB_ERR, length: 3, prev_item_delay: 5
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 325: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_READ, addr: 7af7, pre_drive_delay: 5, post_drive_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 405: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_READ, addr: 7af7, data: 0, response: CFS_APB_ERR, length: 3, prev_item_delay: 5
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 435: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10102, pre_drive_delay: 5, post_drive_delay: 2
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 525: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10102, response: CFS_APB_ERR, length: 4, prev_item_delay: 8
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 545: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_READ, addr: 2b52, pre_drive_delay: 5, post_drive_delay: 2
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 625: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_READ, addr: 2b52, data: 0, response: CFS_APB_ERR, length: 3, prev_item_delay: 7
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 645: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_WRITE, addr: cf03, data: dc6d8442, pre_drive_delay: 2, post_drive_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 695: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: cf03, data: dc6d8442, response: CFS_APB_ERR, length: 3, prev_item_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 725: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10003, pre_drive_delay: 0, post_drive_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 765: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10003, response: CFS_APB_ERR, length: 4, prev_item_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 795: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_WRITE, addr: c, data: c140ba07, pre_drive_delay: 5, post_drive_delay: 1
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 875: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: c, data: c140ba07, response: CFS_APB_ERR, length: 3, prev_item_delay: 8
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 885: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_WRITE, addr: c, data: 649d7424, pre_drive_delay: 3, post_drive_delay: 2
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 945: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: c, data: 649d7424, response: CFS_APB_ERR, length: 3, prev_item_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 965: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10006, pre_drive_delay: 1, post_drive_delay: 5
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 1015: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10006, response: CFS_APB_ERR, length: 4, prev_item_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 1065: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_READ, addr: e244, pre_drive_delay: 0, post_drive_delay: 0
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 1095: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_READ, addr: e244, data: 0, response: CFS_APB_ERR, length: 3, prev_item_delay: 5
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 1095: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_READ, addr: 1b45, pre_drive_delay: 2, post_drive_delay: 2
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 1145: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_READ, addr: 1b45, data: 0, response: CFS_APB_ERR, length: 3, prev_item_delay: 2
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 1165: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_READ, addr: 17f1, pre_drive_delay: 3, post_drive_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 1225: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_READ, addr: 17f1, data: 0, response: CFS_APB_ERR, length: 3, prev_item_delay: 5
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 1265: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 7, pre_drive_delay: 3, post_drive_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 1335: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 7, response: CFS_APB_ERR, length: 4, prev_item_delay: 7
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 1365: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_WRITE, addr: 8a36, data: 75496981, pre_drive_delay: 5, post_drive_delay: 0
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 1445: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 8a36, data: 75496981, response: CFS_APB_ERR, length: 3, prev_item_delay: 8
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 1445: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10305, pre_drive_delay: 4, post_drive_delay: 5
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 1525: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10305, response: CFS_APB_ERR, length: 4, prev_item_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 1575: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_WRITE, addr: c, data: 3ce82edd, pre_drive_delay: 5, post_drive_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 1655: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: c, data: 3ce82edd, response: CFS_APB_ERR, length: 3, prev_item_delay: 10
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 1695: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 103, pre_drive_delay: 3, post_drive_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 1765: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 103, response: CFS_APB_ERR, length: 4, prev_item_delay: 7
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 1805: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_WRITE, addr: c, data: a908a05, pre_drive_delay: 2, post_drive_delay: 1
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 1855: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: c, data: a908a05, response: CFS_APB_ERR, length: 3, prev_item_delay: 6
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 1865: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_WRITE, addr: c, data: 8f9130fc, pre_drive_delay: 4, post_drive_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 1935: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: c, data: 8f9130fc, response: CFS_APB_ERR, length: 3, prev_item_delay: 5
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 1975: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 5, pre_drive_delay: 3, post_drive_delay: 5
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 2045: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 5, response: CFS_APB_ERR, length: 4, prev_item_delay: 7
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 2095: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_READ, addr: c16a, pre_drive_delay: 1, post_drive_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 2135: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_READ, addr: c16a, data: 0, response: CFS_APB_ERR, length: 3, prev_item_delay: 6
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 2165: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_READ, addr: af87, pre_drive_delay: 4, post_drive_delay: 1
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 2235: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_READ, addr: af87, data: 0, response: CFS_APB_ERR, length: 3, prev_item_delay: 7
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 2245: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 303, pre_drive_delay: 3, post_drive_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 2315: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 303, response: CFS_APB_ERR, length: 4, prev_item_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 2355: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_READ, addr: c3e6, pre_drive_delay: 4, post_drive_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 2425: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_READ, addr: c3e6, data: 0, response: CFS_APB_ERR, length: 3, prev_item_delay: 8
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 2455: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 102, pre_drive_delay: 1, post_drive_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 2505: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 102, response: CFS_APB_ERR, length: 4, prev_item_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 2545: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10303, pre_drive_delay: 5, post_drive_delay: 2
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 2635: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10303, response: CFS_APB_ERR, length: 4, prev_item_delay: 9
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 2655: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "uvm_test_top.env.apb_agent.sequencer.seq.item": dir: CFS_APB_READ, addr: 4641, pre_drive_delay: 1, post_drive_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 2695: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_READ, addr: 4641, data: 0, response: CFS_APB_ERR, length: 3, prev_item_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 2725: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 106, pre_drive_delay: 0, post_drive_delay: 0
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 2765: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 106, response: CFS_APB_ERR, length: 4, prev_item_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 2765: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10102, pre_drive_delay: 5, post_drive_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 2855: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10102, response: CFS_APB_ERR, length: 4, prev_item_delay: 5
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 2895: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10305, pre_drive_delay: 5, post_drive_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 2985: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10305, response: CFS_APB_ERR, length: 4, prev_item_delay: 9
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 3015: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10207, pre_drive_delay: 2, post_drive_delay: 1
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 3075: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10207, response: CFS_APB_ERR, length: 4, prev_item_delay: 5
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 3085: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 304, pre_drive_delay: 1, post_drive_delay: 0
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 3135: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 304, response: CFS_APB_ERR, length: 4, prev_item_delay: 2
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 3135: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10305, pre_drive_delay: 0, post_drive_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 3175: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10305, response: CFS_APB_ERR, length: 4, prev_item_delay: 0
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 3205: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 7, pre_drive_delay: 2, post_drive_delay: 1
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 3265: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 7, response: CFS_APB_ERR, length: 4, prev_item_delay: 5
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 3275: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10303, pre_drive_delay: 3, post_drive_delay: 0
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 3345: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10303, response: CFS_APB_ERR, length: 4, prev_item_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 3345: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10103, pre_drive_delay: 3, post_drive_delay: 2
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 3415: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10103, response: CFS_APB_ERR, length: 4, prev_item_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 3435: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10102, pre_drive_delay: 0, post_drive_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 3475: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10102, response: CFS_APB_ERR, length: 4, prev_item_delay: 2
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 3515: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 103, pre_drive_delay: 3, post_drive_delay: 1
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 3585: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 103, response: CFS_APB_ERR, length: 4, prev_item_delay: 7
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 3595: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 103, pre_drive_delay: 5, post_drive_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 3685: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 103, response: CFS_APB_ERR, length: 4, prev_item_delay: 6
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 3725: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10306, pre_drive_delay: 3, post_drive_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 3795: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10306, response: CFS_APB_ERR, length: 4, prev_item_delay: 7
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 3825: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10003, pre_drive_delay: 4, post_drive_delay: 2
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 3905: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10003, response: CFS_APB_ERR, length: 4, prev_item_delay: 7
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 3925: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10007, pre_drive_delay: 1, post_drive_delay: 2
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 3975: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10007, response: CFS_APB_ERR, length: 4, prev_item_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 3995: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10305, pre_drive_delay: 2, post_drive_delay: 5
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 4055: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10305, response: CFS_APB_ERR, length: 4, prev_item_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 4105: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 303, pre_drive_delay: 0, post_drive_delay: 3
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 4145: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 303, response: CFS_APB_ERR, length: 4, prev_item_delay: 5
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 4175: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10003, pre_drive_delay: 3, post_drive_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 4245: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10003, response: CFS_APB_ERR, length: 4, prev_item_delay: 6
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 4285: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10005, pre_drive_delay: 2, post_drive_delay: 1
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 4345: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10005, response: CFS_APB_ERR, length: 4, prev_item_delay: 6
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 4855: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
 # *****NUMBER OF BYTES LEFT IN ALIGNER WHICH ARE NOT TAKEN OUT AFTER TEST_DONE : 0*****
-# ***** OVERALL FUNCTIONAL COVERAGE : 0.00% *****
+# ***** OVERALL FUNCTIONAL COVERAGE : 52.52% *****
 # 
 # --- UVM Report Summary ---
 # 
 # Quit count :     0 of     1
 # ** Report counts by severity
-# UVM_INFO :    3
+# UVM_INFO :  104
 # UVM_WARNING :    0
 # UVM_ERROR :    0
 # UVM_FATAL :    0
 # ** Report counts by id
+# [ITEM_END]    50
+# [ITEM_START]    50
 # [MAXQUITSET]     1
 # [RNTST]     1
+# [TEST_DONE]     1
 # [UVMTOP]     1
 # ** Note: $finish    : /home/abinashnayak/Downloads/questasim/linux_x86_64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 0 ns  Iteration: 215  Instance: /top
+#    Time: 4855 ns  Iteration: 53  Instance: /top
 # Saving coverage database on exit...
-# End time: 21:31:10 on Nov 23,2025, Elapsed time: 0:00:06
-# Errors: 0, Warnings: 4
+# End time: 17:23:20 on Nov 24,2025, Elapsed time: 0:00:04
+# Errors: 0, Warnings: 3

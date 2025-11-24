@@ -29,7 +29,6 @@
 			repeat(no_of_reg_trans)
 			begin
 				reg_config_seq = vs_alg_legal_config_random_vseqs::type_id::create("reg_config_seq");
-				reg_config_seq.block = env.model.reg_block;
 			
 				reg_config_seq.start(env.virtual_sequencer);
 				
