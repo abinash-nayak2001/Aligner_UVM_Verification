@@ -10,7 +10,7 @@ class cfs_algn_reg_ctrl extends uvm_reg;
     rand uvm_reg_field CLR;
     
     local int unsigned ALGN_DATA_WIDTH;
-    
+
     constraint legal_size {
       SIZE.value != 0;
       SIZE.value != 3;
@@ -28,7 +28,7 @@ class cfs_algn_reg_ctrl extends uvm_reg;
       
       ALGN_DATA_WIDTH = 8;
     endfunction
-    
+
     virtual function void build();
       SIZE   = uvm_reg_field::type_id::create(.name("SIZE"),   .parent(null), .contxt(get_full_name()));
       OFFSET = uvm_reg_field::type_id::create(.name("OFFSET"), .parent(null), .contxt(get_full_name()));

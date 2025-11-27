@@ -1,5 +1,5 @@
-# vsim -cvgperinstance -vopt -voptargs="+acc" -coverage -sva -c -do " log -r /* ;coverage save -onexit vs_alg_cov1;run -all; exit" -wlf wave_file1.wlf -l test1.log -sv_seed random work.top "+UVM_TESTNAME=vs_alg_mid_reset_test" "+UVM_MAX_QUIT_COUNT=1" "+UVM_VERBOSITY=UVM_LOW" -f message.f 
-# Start time: 17:22:57 on Nov 24,2025
+# vsim -cvgperinstance -vopt -voptargs="+acc" -coverage -sva -c -do " log -r /* ;coverage save -onexit vs_alg_cov1;run -all; exit" -wlf wave_file1.wlf -l test1.log -sv_seed 2609961934 work.top "+UVM_TESTNAME=vs_alg_mid_reset_test" "+UVM_MAX_QUIT_COUNT=1" "+UVM_VERBOSITY=UVM_LOW" -f message.f 
+# Start time: 10:35:30 on Nov 26,2025
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Warning: ../alg_md_agent/cfs_md_sequencer_base.sv(12): (vopt-2250) Function "get_data_width" has no return value assignment.
 # ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
@@ -45,7 +45,6 @@
 # Loading work.cfs_edge_detect(fast__1)
 # Loading /home/abinashnayak/Downloads/questasim/uvm-1.1d/linux_x86_64/uvm_dpi.so
 # ** Warning: (vsim-8634) Code was not compiled with coverage options.
-# Sv_Seed = 3655886356
 #  log -r /* 
 # coverage save -onexit vs_alg_cov1
 # run -all
@@ -183,110 +182,75 @@
 #       num_last_rsps           integral                               32    'd1  
 # --------------------------------------------------------------------------------
 # 
-# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 50: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10201, pre_drive_delay: 1, post_drive_delay: 4
-# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 85: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10201, response: CFS_APB_OKAY, length: 3, prev_item_delay: 3
-# UVM_INFO ../alg_tb/vs_alg_legal_config_random_vseqs.sv(22) @ 125: uvm_test_top.env.virtual_sequencer@@reg_config_seq [REG_BLOCK] DES VALUE OF CTRL : 201
-# UVM_INFO ../alg_tb/vs_alg_legal_config_random_vseqs.sv(23) @ 125: uvm_test_top.env.virtual_sequencer@@reg_config_seq [REG_BLOCK] MIR VALUE OF CTRL : 201
-# UVM_INFO ../alg_md_agent/cfs_md_driver_master.sv(21) @ 125: uvm_test_top.env.md_rx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_rx_agent.sequencer.seq.item": data: {'ha3, 'h80, 'h66, 'h0e}, offset: 0, pre_drive_delay: 3, post_drive_delay: 3
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 156: uvm_test_top.env.md_rx_agent.monitor [ITEM_START] Monitor started collecting item: [156..-1] data: {'ha3, 'h80, 'h66, 'h0e}, size: 4, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 12, in_transaction: 1
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(530) @ 165: uvm_test_top.env.model [RX_FIFO] RX FIFO push - new level: 1, pushed entry: [156..-1] data: {'ha3, 'h80, 'h66, 'h0e}, size: 4, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 12, in_transaction: 1
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 165: uvm_test_top.env.md_rx_agent.monitor [ITEM_END] Monitored item: [156..165] data: {'ha3, 'h80, 'h66, 'h0e}, size: 4, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 12, in_transaction: 0
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(546) @ 175: uvm_test_top.env.model [RX_FIFO] RX FIFO pop - new level: 0, popped entry: [156..165] data: {'ha3, 'h80, 'h66, 'h0e}, size: 4, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 12, in_transaction: 0
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(560) @ 185: uvm_test_top.env.model [TX_FIFO] TX FIFO push - new level: 1, pushed entry: [156..165] data: {'ha3}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 186: uvm_test_top.env.md_tx_agent.monitor [ITEM_START] Monitor started collecting item: [186..-1] data: {'ha3}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 15, in_transaction: 1
-# UVM_INFO ../alg_md_agent/cfs_md_driver_slave.sv(35) @ 186: uvm_test_top.env.md_tx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_tx_agent.sequencer.seq.item": length: 0, response: CFS_MD_OKAY, ready_at_end: 0
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(560) @ 195: uvm_test_top.env.model [TX_FIFO] TX FIFO push - new level: 2, pushed entry: [156..165] data: {'h80}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(575) @ 195: uvm_test_top.env.model [TX_FIFO] TX FIFO pop - new level: 1, popped entry: [156..165] data: {'ha3}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(223) @ 195: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED AN ITEM TO EXP_TX
-# UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(175) @ 195: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED A WATCHDOG PROCESS TO EXP_TX
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 195: uvm_test_top.env.md_tx_agent.monitor [ITEM_END] Monitored item: [186..195] data: {'ha3}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 15, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_driver_master.sv(21) @ 195: uvm_test_top.env.md_rx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_rx_agent.sequencer.seq.item": data: {'he8}, offset: 3, pre_drive_delay: 0, post_drive_delay: 5
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 196: uvm_test_top.env.md_rx_agent.monitor [ITEM_START] Monitor started collecting item: [196..-1] data: {'he8}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 1, prev_item_delay: 3, in_transaction: 1
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 196: uvm_test_top.env.md_tx_agent.monitor [ITEM_START] Monitor started collecting item: [196..-1] data: {'h80}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 0, in_transaction: 1
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 50: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10301, pre_drive_delay: 0, post_drive_delay: 4
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 75: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10301, response: CFS_APB_OKAY, length: 3, prev_item_delay: 2
+# UVM_INFO ../alg_tb/vs_alg_legal_config_random_vseqs.sv(22) @ 115: uvm_test_top.env.virtual_sequencer@@reg_config_seq [REG_BLOCK] DES VALUE OF CTRL : 301
+# UVM_INFO ../alg_tb/vs_alg_legal_config_random_vseqs.sv(23) @ 115: uvm_test_top.env.virtual_sequencer@@reg_config_seq [REG_BLOCK] MIR VALUE OF CTRL : 301
+# UVM_INFO ../alg_md_agent/cfs_md_driver_master.sv(21) @ 115: uvm_test_top.env.md_rx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_rx_agent.sequencer.seq.item": data: {'h08}, offset: 2, pre_drive_delay: 5, post_drive_delay: 2
+# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 166: uvm_test_top.env.md_rx_agent.monitor [ITEM_START] Monitor started collecting item: [166..-1] data: {'h08}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 13, in_transaction: 1
+# UVM_INFO ../alg_tb/cfs_algn_model.sv(529) @ 175: uvm_test_top.env.model [RX_FIFO] RX FIFO push - new level: 1, pushed entry: [166..-1] data: {'h08}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 13, in_transaction: 1
+# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 175: uvm_test_top.env.md_rx_agent.monitor [ITEM_END] Monitored item: [166..175] data: {'h08}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 13, in_transaction: 0
+# UVM_INFO ../alg_tb/cfs_algn_model.sv(545) @ 185: uvm_test_top.env.model [RX_FIFO] RX FIFO pop - new level: 0, popped entry: [166..175] data: {'h08}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 13, in_transaction: 0
+# UVM_INFO ../alg_tb/cfs_algn_model.sv(559) @ 195: uvm_test_top.env.model [TX_FIFO] TX FIFO push - new level: 1, pushed entry: [166..175] data: {'h08}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
+# UVM_INFO ../alg_md_agent/cfs_md_driver_master.sv(21) @ 195: uvm_test_top.env.md_rx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_rx_agent.sequencer.seq.item": data: {'hb1, 'h77}, offset: 0, pre_drive_delay: 4, post_drive_delay: 4
+# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 196: uvm_test_top.env.md_tx_agent.monitor [ITEM_START] Monitor started collecting item: [196..-1] data: {'h08}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 1, prev_item_delay: 16, in_transaction: 1
 # UVM_INFO ../alg_md_agent/cfs_md_driver_slave.sv(35) @ 196: uvm_test_top.env.md_tx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_tx_agent.sequencer.seq.item": length: 0, response: CFS_MD_OKAY, ready_at_end: 0
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(530) @ 205: uvm_test_top.env.model [RX_FIFO] RX FIFO push - new level: 1, pushed entry: [196..-1] data: {'he8}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 1, prev_item_delay: 3, in_transaction: 1
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(575) @ 205: uvm_test_top.env.model [TX_FIFO] TX FIFO pop - new level: 0, popped entry: [156..165] data: {'h80}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
+# UVM_INFO ../alg_tb/cfs_algn_model.sv(574) @ 205: uvm_test_top.env.model [TX_FIFO] TX FIFO pop - new level: 0, popped entry: [166..175] data: {'h08}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
 # UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(223) @ 205: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED AN ITEM TO EXP_TX
 # UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(175) @ 205: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED A WATCHDOG PROCESS TO EXP_TX
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(560) @ 205: uvm_test_top.env.model [TX_FIFO] TX FIFO push - new level: 1, pushed entry: [156..165] data: {'h66}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 205: uvm_test_top.env.md_rx_agent.monitor [ITEM_END] Monitored item: [196..205] data: {'he8}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 1, prev_item_delay: 3, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 205: uvm_test_top.env.md_tx_agent.monitor [ITEM_END] Monitored item: [196..205] data: {'h80}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 206: uvm_test_top.env.md_tx_agent.monitor [ITEM_START] Monitor started collecting item: [206..-1] data: {'h66}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 0, in_transaction: 1
-# UVM_INFO ../alg_md_agent/cfs_md_driver_slave.sv(35) @ 206: uvm_test_top.env.md_tx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_tx_agent.sequencer.seq.item": length: 0, response: CFS_MD_OKAY, ready_at_end: 0
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(575) @ 215: uvm_test_top.env.model [TX_FIFO] TX FIFO pop - new level: 0, popped entry: [156..165] data: {'h66}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(223) @ 215: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED AN ITEM TO EXP_TX
-# UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(175) @ 215: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED A WATCHDOG PROCESS TO EXP_TX
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(546) @ 215: uvm_test_top.env.model [RX_FIFO] RX FIFO pop - new level: 0, popped entry: [196..205] data: {'he8}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 1, prev_item_delay: 3, in_transaction: 0
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(560) @ 215: uvm_test_top.env.model [TX_FIFO] TX FIFO push - new level: 1, pushed entry: [156..165] data: {'h0e}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 215: uvm_test_top.env.md_tx_agent.monitor [ITEM_END] Monitored item: [206..215] data: {'h66}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 216: uvm_test_top.env.md_tx_agent.monitor [ITEM_START] Monitor started collecting item: [216..-1] data: {'h0e}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 0, in_transaction: 1
-# UVM_INFO ../alg_md_agent/cfs_md_driver_slave.sv(35) @ 216: uvm_test_top.env.md_tx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_tx_agent.sequencer.seq.item": length: 0, response: CFS_MD_OKAY, ready_at_end: 0
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(575) @ 225: uvm_test_top.env.model [TX_FIFO] TX FIFO pop - new level: 0, popped entry: [156..165] data: {'h0e}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(223) @ 225: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED AN ITEM TO EXP_TX
-# UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(175) @ 225: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED A WATCHDOG PROCESS TO EXP_TX
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(560) @ 225: uvm_test_top.env.model [TX_FIFO] TX FIFO push - new level: 1, pushed entry: [196..205] data: {'he8}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 225: uvm_test_top.env.md_tx_agent.monitor [ITEM_END] Monitored item: [216..225] data: {'h0e}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 226: uvm_test_top.env.md_tx_agent.monitor [ITEM_START] Monitor started collecting item: [226..-1] data: {'he8}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 0, in_transaction: 1
-# UVM_INFO ../alg_md_agent/cfs_md_driver_master.sv(21) @ 255: uvm_test_top.env.md_rx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_rx_agent.sequencer.seq.item": data: {'h26}, offset: 3, pre_drive_delay: 2, post_drive_delay: 1
-# UVM_INFO ../alg_md_agent/cfs_md_driver_slave.sv(35) @ 265: uvm_test_top.env.md_tx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_tx_agent.sequencer.seq.item": length: 0, response: CFS_MD_OKAY, ready_at_end: 0
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(575) @ 275: uvm_test_top.env.model [TX_FIFO] TX FIFO pop - new level: 0, popped entry: [196..205] data: {'he8}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(223) @ 275: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED AN ITEM TO EXP_TX
-# UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(175) @ 275: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED A WATCHDOG PROCESS TO EXP_TX
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 275: uvm_test_top.env.md_tx_agent.monitor [ITEM_END] Monitored item: [226..275] data: {'he8}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 5, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 276: uvm_test_top.env.md_rx_agent.monitor [ITEM_START] Monitor started collecting item: [276..-1] data: {'h26}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 1, prev_item_delay: 7, in_transaction: 1
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(530) @ 285: uvm_test_top.env.model [RX_FIFO] RX FIFO push - new level: 1, pushed entry: [276..-1] data: {'h26}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 1, prev_item_delay: 7, in_transaction: 1
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 285: uvm_test_top.env.md_rx_agent.monitor [ITEM_END] Monitored item: [276..285] data: {'h26}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 1, prev_item_delay: 7, in_transaction: 0
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(546) @ 295: uvm_test_top.env.model [RX_FIFO] RX FIFO pop - new level: 0, popped entry: [276..285] data: {'h26}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 1, prev_item_delay: 7, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_driver_master.sv(21) @ 295: uvm_test_top.env.md_rx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_rx_agent.sequencer.seq.item": data: {'h97}, offset: 3, pre_drive_delay: 5, post_drive_delay: 3
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(560) @ 305: uvm_test_top.env.model [TX_FIFO] TX FIFO push - new level: 1, pushed entry: [276..285] data: {'h26}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 306: uvm_test_top.env.md_tx_agent.monitor [ITEM_START] Monitor started collecting item: [306..-1] data: {'h26}, size: 1, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 3, in_transaction: 1
-# UVM_INFO ../alg_md_agent/cfs_md_driver_slave.sv(35) @ 306: uvm_test_top.env.md_tx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_tx_agent.sequencer.seq.item": length: 0, response: CFS_MD_OKAY, ready_at_end: 0
-# UVM_WARNING verilog_src/uvm-1.1d/src/seq/uvm_sequencer_base.svh(709) @ 345: uvm_test_top.env.md_rx_agent.sequencer [SEQREQZMB] The task responsible for requesting a wait_for_grant on sequencer 'uvm_test_top.env.md_rx_agent.sequencer' for sequence 'uvm_test_top.env.md_rx_agent.sequencer.seq' has been killed, to avoid a deadlock the sequence will be removed from the arbitration queues
-# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 385: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 10002, pre_drive_delay: 1, post_drive_delay: 3
-# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 425: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 10002, response: CFS_APB_OKAY, length: 3, prev_item_delay: 6
-# UVM_INFO ../alg_tb/vs_alg_legal_config_random_vseqs.sv(22) @ 455: uvm_test_top.env.virtual_sequencer@@reg_config_seq [REG_BLOCK] DES VALUE OF CTRL : 2
-# UVM_INFO ../alg_tb/vs_alg_legal_config_random_vseqs.sv(23) @ 455: uvm_test_top.env.virtual_sequencer@@reg_config_seq [REG_BLOCK] MIR VALUE OF CTRL : 2
-# UVM_INFO ../alg_md_agent/cfs_md_driver_master.sv(21) @ 455: uvm_test_top.env.md_rx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_rx_agent.sequencer.seq.item": data: {'hd6, 'h18}, offset: 2, pre_drive_delay: 3, post_drive_delay: 4
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 486: uvm_test_top.env.md_rx_agent.monitor [ITEM_START] Monitor started collecting item: [486..-1] data: {'hd6, 'h18}, size: 2, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 14, in_transaction: 1
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(530) @ 495: uvm_test_top.env.model [RX_FIFO] RX FIFO push - new level: 1, pushed entry: [486..-1] data: {'hd6, 'h18}, size: 2, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 14, in_transaction: 1
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 495: uvm_test_top.env.md_rx_agent.monitor [ITEM_END] Monitored item: [486..495] data: {'hd6, 'h18}, size: 2, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 14, in_transaction: 0
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(546) @ 505: uvm_test_top.env.model [RX_FIFO] RX FIFO pop - new level: 0, popped entry: [486..495] data: {'hd6, 'h18}, size: 2, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 14, in_transaction: 0
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(560) @ 515: uvm_test_top.env.model [TX_FIFO] TX FIFO push - new level: 1, pushed entry: [486..495] data: {'hd6, 'h18}, size: 2, offset: 0, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 516: uvm_test_top.env.md_tx_agent.monitor [ITEM_START] Monitor started collecting item: [516..-1] data: {'hd6, 'h18}, size: 2, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 17, in_transaction: 1
-# UVM_INFO ../alg_md_agent/cfs_md_driver_slave.sv(35) @ 516: uvm_test_top.env.md_tx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_tx_agent.sequencer.seq.item": length: 0, response: CFS_MD_OKAY, ready_at_end: 0
-# UVM_INFO ../alg_tb/cfs_algn_model.sv(575) @ 525: uvm_test_top.env.model [TX_FIFO] TX FIFO pop - new level: 0, popped entry: [486..495] data: {'hd6, 'h18}, size: 2, offset: 0, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
-# UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(223) @ 525: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED AN ITEM TO EXP_TX
-# UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(175) @ 525: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED A WATCHDOG PROCESS TO EXP_TX
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 525: uvm_test_top.env.md_tx_agent.monitor [ITEM_END] Monitored item: [516..525] data: {'hd6, 'h18}, size: 2, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 17, in_transaction: 0
-# UVM_INFO ../alg_md_agent/cfs_md_driver_master.sv(21) @ 535: uvm_test_top.env.md_rx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_rx_agent.sequencer.seq.item": data: {'h68}, offset: 3, pre_drive_delay: 2, post_drive_delay: 3
-# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 556: uvm_test_top.env.md_rx_agent.monitor [ITEM_START] Monitor started collecting item: [556..-1] data: {'h68}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 1, prev_item_delay: 6, in_transaction: 1
-# UVM_WARNING verilog_src/uvm-1.1d/src/seq/uvm_sequencer_base.svh(709) @ 595: uvm_test_top.env.md_rx_agent.sequencer [SEQREQZMB] The task responsible for requesting a wait_for_grant on sequencer 'uvm_test_top.env.md_rx_agent.sequencer' for sequence 'uvm_test_top.env.md_rx_agent.sequencer.seq' has been killed, to avoid a deadlock the sequence will be removed from the arbitration queues
-# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 1085: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 205: uvm_test_top.env.md_tx_agent.monitor [ITEM_END] Monitored item: [196..205] data: {'h08}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 1, prev_item_delay: 16, in_transaction: 0
+# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 236: uvm_test_top.env.md_rx_agent.monitor [ITEM_START] Monitor started collecting item: [236..-1] data: {'hb1, 'h77}, size: 2, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 6, in_transaction: 1
+# UVM_INFO ../alg_tb/cfs_algn_model.sv(529) @ 245: uvm_test_top.env.model [RX_FIFO] RX FIFO push - new level: 1, pushed entry: [236..-1] data: {'hb1, 'h77}, size: 2, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 6, in_transaction: 1
+# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 245: uvm_test_top.env.md_rx_agent.monitor [ITEM_END] Monitored item: [236..245] data: {'hb1, 'h77}, size: 2, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 6, in_transaction: 0
+# UVM_INFO ../alg_tb/cfs_algn_model.sv(545) @ 255: uvm_test_top.env.model [RX_FIFO] RX FIFO pop - new level: 0, popped entry: [236..245] data: {'hb1, 'h77}, size: 2, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 6, in_transaction: 0
+# UVM_INFO ../alg_tb/cfs_algn_model.sv(559) @ 265: uvm_test_top.env.model [TX_FIFO] TX FIFO push - new level: 1, pushed entry: [236..245] data: {'hb1}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
+# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 266: uvm_test_top.env.md_tx_agent.monitor [ITEM_START] Monitor started collecting item: [266..-1] data: {'hb1}, size: 1, offset: 3, response: CFS_MD_OKAY, length: 1, prev_item_delay: 6, in_transaction: 1
+# UVM_WARNING verilog_src/uvm-1.1d/src/seq/uvm_sequencer_base.svh(709) @ 305: uvm_test_top.env.md_rx_agent.sequencer [SEQREQZMB] The task responsible for requesting a wait_for_grant on sequencer 'uvm_test_top.env.md_rx_agent.sequencer' for sequence 'uvm_test_top.env.md_rx_agent.sequencer.seq' has been killed, to avoid a deadlock the sequence will be removed from the arbitration queues
+# UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 345: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 202, pre_drive_delay: 2, post_drive_delay: 0
+# UVM_INFO ../alg_apb_agent/cfs_apb_monitor.sv(64) @ 395: uvm_test_top.env.apb_agent.monitor [ITEM_END] Monitored item:: dir: CFS_APB_WRITE, addr: 0, data: 202, response: CFS_APB_OKAY, length: 3, prev_item_delay: 7
+# UVM_INFO ../alg_tb/vs_alg_legal_config_random_vseqs.sv(22) @ 395: uvm_test_top.env.virtual_sequencer@@reg_config_seq [REG_BLOCK] DES VALUE OF CTRL : 202
+# UVM_INFO ../alg_tb/vs_alg_legal_config_random_vseqs.sv(23) @ 395: uvm_test_top.env.virtual_sequencer@@reg_config_seq [REG_BLOCK] MIR VALUE OF CTRL : 202
+# UVM_INFO ../alg_md_agent/cfs_md_driver_master.sv(21) @ 395: uvm_test_top.env.md_rx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_rx_agent.sequencer.seq.item": data: {'ha9, 'h19}, offset: 0, pre_drive_delay: 2, post_drive_delay: 0
+# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 416: uvm_test_top.env.md_rx_agent.monitor [ITEM_START] Monitor started collecting item: [416..-1] data: {'ha9, 'h19}, size: 2, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 11, in_transaction: 1
+# UVM_INFO ../alg_tb/cfs_algn_model.sv(529) @ 425: uvm_test_top.env.model [RX_FIFO] RX FIFO push - new level: 1, pushed entry: [416..-1] data: {'ha9, 'h19}, size: 2, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 11, in_transaction: 1
+# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 425: uvm_test_top.env.md_rx_agent.monitor [ITEM_END] Monitored item: [416..425] data: {'ha9, 'h19}, size: 2, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 11, in_transaction: 0
+# UVM_INFO ../alg_md_agent/cfs_md_driver_master.sv(21) @ 425: uvm_test_top.env.md_rx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_rx_agent.sequencer.seq.item": data: {'hd3, 'h6a}, offset: 2, pre_drive_delay: 4, post_drive_delay: 4
+# UVM_INFO ../alg_tb/cfs_algn_model.sv(545) @ 435: uvm_test_top.env.model [RX_FIFO] RX FIFO pop - new level: 0, popped entry: [416..425] data: {'ha9, 'h19}, size: 2, offset: 0, response: CFS_MD_OKAY, length: 1, prev_item_delay: 11, in_transaction: 0
+# UVM_INFO ../alg_tb/cfs_algn_model.sv(559) @ 445: uvm_test_top.env.model [TX_FIFO] TX FIFO push - new level: 1, pushed entry: [416..425] data: {'ha9, 'h19}, size: 2, offset: 2, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
+# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 446: uvm_test_top.env.md_tx_agent.monitor [ITEM_START] Monitor started collecting item: [446..-1] data: {'ha9, 'h19}, size: 2, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 14, in_transaction: 1
+# UVM_INFO ../alg_md_agent/cfs_md_driver_slave.sv(35) @ 446: uvm_test_top.env.md_tx_agent.driver [ITEM_START] Driving "uvm_test_top.env.md_tx_agent.sequencer.seq.item": length: 0, response: CFS_MD_OKAY, ready_at_end: 0
+# UVM_INFO ../alg_tb/cfs_algn_model.sv(574) @ 455: uvm_test_top.env.model [TX_FIFO] TX FIFO pop - new level: 0, popped entry: [416..425] data: {'ha9, 'h19}, size: 2, offset: 2, response: CFS_MD_OKAY, length: 0, prev_item_delay: 0, in_transaction: 0
+# UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(223) @ 455: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED AN ITEM TO EXP_TX
+# UVM_INFO ../alg_tb/cfs_algn_scoreboard.sv(175) @ 455: uvm_test_top.env.scoreboard [SCO DEBUG] PUSHED A WATCHDOG PROCESS TO EXP_TX
+# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(77) @ 455: uvm_test_top.env.md_tx_agent.monitor [ITEM_END] Monitored item: [446..455] data: {'ha9, 'h19}, size: 2, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 14, in_transaction: 0
+# UVM_INFO ../alg_md_agent/cfs_md_monitor.sv(55) @ 466: uvm_test_top.env.md_rx_agent.monitor [ITEM_START] Monitor started collecting item: [466..-1] data: {'hd3, 'h6a}, size: 2, offset: 2, response: CFS_MD_OKAY, length: 1, prev_item_delay: 4, in_transaction: 1
+# UVM_WARNING verilog_src/uvm-1.1d/src/seq/uvm_sequencer_base.svh(709) @ 505: uvm_test_top.env.md_rx_agent.sequencer [SEQREQZMB] The task responsible for requesting a wait_for_grant on sequencer 'uvm_test_top.env.md_rx_agent.sequencer' for sequence 'uvm_test_top.env.md_rx_agent.sequencer.seq' has been killed, to avoid a deadlock the sequence will be removed from the arbitration queues
+# UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 995: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
 # *****NUMBER OF BYTES LEFT IN ALIGNER WHICH ARE NOT TAKEN OUT AFTER TEST_DONE : 0*****
-# ***** OVERALL FUNCTIONAL COVERAGE : 67.47% *****
+# ***** OVERALL FUNCTIONAL COVERAGE : 63.69% *****
 # 
 # --- UVM Report Summary ---
 # 
 # Quit count :     0 of     1
 # ** Report counts by severity
-# UVM_INFO :   80
+# UVM_INFO :   45
 # UVM_WARNING :    2
 # UVM_ERROR :    0
 # UVM_FATAL :    0
 # ** Report counts by id
-# [ITEM_END]    12
-# [ITEM_START]    27
+# [ITEM_END]     7
+# [ITEM_START]    15
 # [MAXQUITSET]     1
 # [REG_BLOCK]     4
 # [RNTST]     1
-# [RX_FIFO]     8
-# [SCO DEBUG]    12
+# [RX_FIFO]     6
+# [SCO DEBUG]     4
 # [SEQREQZMB]     2
 # [TEST_DONE]     1
-# [TX_FIFO]    13
+# [TX_FIFO]     5
 # [UVMTOP]     1
 # ** Note: $finish    : /home/abinashnayak/Downloads/questasim/linux_x86_64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
-#    Time: 1085 ns  Iteration: 53  Instance: /top
+#    Time: 995 ns  Iteration: 53  Instance: /top
 # Saving coverage database on exit...
-# End time: 17:23:03 on Nov 24,2025, Elapsed time: 0:00:06
+# End time: 10:35:36 on Nov 26,2025, Elapsed time: 0:00:06
 # Errors: 0, Warnings: 4

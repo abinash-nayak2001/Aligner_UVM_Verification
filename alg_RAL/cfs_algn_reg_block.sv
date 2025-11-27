@@ -28,6 +28,8 @@ class cfs_algn_reg_block extends uvm_reg_block;
       );
       
       default_map.set_check_on_read(1);
+
+      add_hdl_path("dut.core.regs","RTL");
       
       CTRL   = cfs_algn_reg_ctrl::type_id::create(  .name("CTRL"),   .parent(null), .contxt(get_full_name()));
       STATUS = cfs_algn_reg_status::type_id::create(.name("STATUS"), .parent(null), .contxt(get_full_name()));
@@ -43,6 +45,10 @@ class cfs_algn_reg_block extends uvm_reg_block;
       STATUS.build();
       IRQEN.build();
       IRQ.build();
+
+      CTRL.add_hdl_path_slice("ctrl_size", 0, 3);
+      CTRL.add_hdl_path_slice("ctrl_offset", 8, 2);
+      CTRL.add_hdl_path_slice("ctrl_clr", 16, 1);
       
       default_map.add_reg(.rg(CTRL),   .offset('h0000), .rights("RW"));
       default_map.add_reg(.rg(STATUS), .offset('h000C), .rights("RO"));

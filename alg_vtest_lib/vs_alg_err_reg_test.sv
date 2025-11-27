@@ -49,7 +49,7 @@ class vs_alg_err_reg_test extends cfs_algn_test_base;
           illegal_config_seq.start(env.virtual_sequencer);
       end
     join
-  	
+
   	phase.phase_done.set_drain_time(this,500);
 	phase.drop_objection(this, "TEST_DONE");
   endtask

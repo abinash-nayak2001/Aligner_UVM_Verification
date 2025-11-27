@@ -366,7 +366,6 @@
       
       if(reg_block.STATUS.CNT_DROP.get_mirrored_value() < max_value) begin
         void'(reg_block.STATUS.CNT_DROP.predict(reg_block.STATUS.CNT_DROP.get_mirrored_value() + 1));
-        
         `uvm_info("CNT_DROP", $sformatf("Increment %9s: %0d due to: %0s",
                                      reg_block.STATUS.CNT_DROP.get_full_name(),
                                      reg_block.STATUS.CNT_DROP.get_mirrored_value,

@@ -11,7 +11,7 @@
     
     //Pointer to CNT_DROP register field
     uvm_reg_field cnt_drop;
-
+	
     `uvm_object_utils(cfs_algn_clr_cnt_drop)
     
     function new(string name = "");
@@ -30,9 +30,9 @@
         if(value == 1) begin
           void'(cnt_drop.predict(0));
           
+          `uvm_info("CNT_DROP", $sformatf("Clearing %0s as %0s is %0b", cnt_drop.get_full_name(), fld.get_full_name, fld.value), UVM_MEDIUM)
           value = 0;
-          
-          `uvm_info("CNT_DROP", $sformatf("Clearing %0s", cnt_drop.get_full_name()), UVM_HIGH)
+          `uvm_info("CLR", $sformatf("%0s is reset back to %0b", fld.get_full_name, fld.get_mirrored_value()), UVM_HIGH)
         end
       end
       
