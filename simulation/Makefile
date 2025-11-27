@@ -40,10 +40,10 @@ help:
 
 clean : clean_$(SIMULATOR)
 sv_cmp : sv_cmp_$(SIMULATOR)
-run_test : run_test_$(SIMULATOR)
 run_test1 : run_test1_$(SIMULATOR)
 run_test2 : run_test2_$(SIMULATOR)
 run_test3 : run_test3_$(SIMULATOR)
+run_test4 : run_test4_$(SIMULATOR)
 view_wave1 : view_wave1_$(SIMULATOR)
 view_wave2 : view_wave2_$(SIMULATOR)
 view_wave3 : view_wave3_$(SIMULATOR)
@@ -61,20 +61,20 @@ sv_cmp_Questa:
 	vmap work $(work)
 	vlog +acc=rnb -work $(work) $(RTL) $(INC) $(SVTB2) $(SVTB3) $(SVTB4) $(SVTB5) $(SVTB6) $(SVTB7) $(SVTB1)
 	
-run_test_Questa: clean sv_cmp
+run_test1_Questa: clean sv_cmp
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH1)  -wlf wave_file1.wlf -l test1.log -sv_seed 2609961934 work.top +UVM_TESTNAME=vs_alg_mid_reset_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov1
 	
-run_test1_Questa:
+run_test2_Questa:
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH2)  -wlf wave_file2.wlf -l test2.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_legal_reg_rx_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov2
 	
-run_test2_Questa: clean sv_cmp
+run_test3_Questa:
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH3)  -wlf wave_file3.wlf -l test3.log  -sv_seed random  work.top +UVM_TESTNAME=vs_alg_err_reg_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov3
 	
-run_test3_Questa:
-	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH4)  -wlf wave_file4.wlf -l test4.log  -sv_seed random  work.top +UVM_TESTNAME=
+run_test4_Questa: clean sv_cmp
+	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH2)  -wlf wave_file4.wlf -l test4.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_err_rx_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov4
 	
 view_wave1_Questa:
@@ -95,7 +95,7 @@ report_Questa:
 
 regress_Questa: clean_Questa run_test_Questa run_test1_Questa run_test2_Questa run_test3_Questa report_Questa cov_Questa
 
-regress1_Questa: clean_Questa run_test_Questa run_test1_Questa run_test2_Questa
+regress1_Questa: clean_Questa run_test1_Questa run_test2_Questa run_test3_Questa
 	vcover merge vs_alg_cov vs_alg_cov1 vs_alg_cov2 vs_alg_cov3
 	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov
 
