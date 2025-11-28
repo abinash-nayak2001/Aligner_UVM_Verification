@@ -49,7 +49,7 @@
   	`include "cfs_md_sequence_base_master.sv"
 
   	`include "cfs_md_sequence_simple_master.sv"
-  	`include "vs_alg_master_legal_rx_seq.sv"
+  	`include "vs_alg_master_rx_seq.sv"
   	
   	`include "cfs_md_sequence_simple_slave.sv"
   	`include "cfs_md_sequence_slave_response.sv"

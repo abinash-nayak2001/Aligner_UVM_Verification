@@ -29,6 +29,7 @@ class cfs_md_coverage#(int unsigned DATA_WIDTH = 32) extends uvm_ext_coverage#(.
         size : coverpoint item.data.size() {
           option.comment = "Size of the MD access";
           bins values[]  = {[1:(DATA_WIDTH/8)]};
+          ignore_bins invalid_size = {3};
         }
 
         response : coverpoint item.response {
@@ -53,6 +54,7 @@ class cfs_md_coverage#(int unsigned DATA_WIDTH = 32) extends uvm_ext_coverage#(.
 
         offset_x_size : cross offset, size {
           ignore_bins ignore_offset_plus_size_gt_data_width = offset_x_size with (offset + size > (DATA_WIDTH / 8));
+          ignore_bins illegal_size_offset_comb = offset_x_size with ((((DATA_WIDTH / 8)+offset)%size != 0));
         }
 
       endgroup

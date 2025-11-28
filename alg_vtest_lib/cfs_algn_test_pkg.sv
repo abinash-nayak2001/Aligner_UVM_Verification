@@ -25,6 +25,7 @@ package cfs_algn_test_pkg;
   `include "vs_alg_mid_reset_test.sv"
   `include "vs_alg_err_reg_test.sv"
   `include "vs_alg_err_rx_test.sv"
+  `include "vs_alg_clr_cnt_drop_reg_test.sv"
 endpackage
 
 `endif

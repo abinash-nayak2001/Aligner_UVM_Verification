@@ -9,7 +9,7 @@
 		vs_alg_legal_rx_random_vseqs rx_seq;
 		cfs_apb_vif vif;
 		int unsigned n_bytes_in_buffer = 0;
-		int unsigned no_of_reg_trans = 10;
+		int unsigned no_of_reg_trans = 20;
 		int unsigned no_of_rx_trans = 20;
 		
 		function new(string name = "vs_alg_legal_reg_rx_test", uvm_component parent = null);
