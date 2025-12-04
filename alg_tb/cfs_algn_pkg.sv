@@ -48,6 +48,8 @@
     `include "vs_alg_illegal_rx_random_vseqs.sv"
     `include "vs_alg_status_read_vseqs.sv"
     `include "vs_alg_clr_reg_vseqs.sv"
+    `include "vs_alg_reg_read_vseqs.sv"
+    `include "vs_alg_irq_irqen_write_vseqs.sv"
 
   endpackage
 

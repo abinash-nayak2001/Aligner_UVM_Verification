@@ -1,3 +1,7 @@
+/********************************************
+TO SEE THE CHANGE IN MIRRORED VALUE OF STATUS.CLR WHEN WRITING INTO IT, CHANGE VERBOSITY TO UVM_HIGH 
+*********************************************/
+
 `ifndef VS_ALG_CLR_CNT_DROP_REG_TEST_SV
   `define VS_ALG_CLR_CNT_DROP_REG_TEST_SV
   
@@ -16,7 +20,7 @@ class vs_alg_clr_cnt_drop_reg_test extends vs_alg_err_rx_test;
 
   task run_phase(uvm_phase phase);
     super.run_phase(phase);
-    $display("COMPLETED vs_alg_err_rx_test..... NOW RUNNING vs_alg_clr_cnt_drop_reg_test.....");
+    $display("\n*****COMPLETED vs_alg_err_rx_test..... NOW RUNNING vs_alg_clr_cnt_drop_reg_test..... *****\n");
 
     phase.raise_objection(this, "TEST_DONE");
     

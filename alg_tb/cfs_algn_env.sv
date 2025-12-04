@@ -99,7 +99,7 @@
 
       //Connect the APB monitor with the predictor
       apb_agent.monitor.output_port.connect(predictor.bus_in);
-      
+      model.reg_block.default_map.set_auto_predict(0); 
       //Connect the APB sequencer to the address map in order
       //to use the API of the registers to start APB transactions
       model.reg_block.default_map.set_sequencer(apb_agent.sequencer, adapter);
