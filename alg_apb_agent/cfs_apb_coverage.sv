@@ -26,11 +26,17 @@ class cfs_apb_coverage extends uvm_ext_coverage#(.VIRTUAL_INTF(cfs_apb_vif), .IT
       //at which the bit of the PRDATA was 0
       uvm_ext_cover_index_wrapper#(`CFS_APB_MAX_DATA_WIDTH) wrap_cover_rd_data_0;
 
-      //Wrapper over the coverage group covering the indices in the PRDATA signal
-      //at which the bit of the PRDATA was 1
-      uvm_ext_cover_index_wrapper#(`CFS_APB_MAX_DATA_WIDTH, 12, 20, 31) wrap_cover_rd_data_1;
-
       `uvm_component_utils(cfs_apb_coverage)
+
+      covergroup wrap_cover_rd_data_1 with function sample(int unsigned value);
+        option.per_instance = 1;
+        
+        index : coverpoint value {
+          option.comment = "Index";
+          bins values[`CFS_APB_MAX_DATA_WIDTH] = {[0:`CFS_APB_MAX_DATA_WIDTH-1]};
+          ignore_bins reserved_fields = {[12:15],[20:31]};
+        }
+      endgroup
 
       covergroup cover_item with function sample(cfs_apb_item_mon item);
         option.per_instance = 1;
@@ -83,6 +89,9 @@ class cfs_apb_coverage extends uvm_ext_coverage#(.VIRTUAL_INTF(cfs_apb_vif), .IT
 
         cover_reset = new();
         cover_reset.set_inst_name($sformatf("%s_%s", get_full_name(), "cover_reset"));
+
+        wrap_cover_rd_data_1 = new();
+        wrap_cover_rd_data_1.set_inst_name($sformatf("%s_%s", get_full_name(), "wrap_cover_rd_data_1"));
       endfunction
 
       virtual function void build_phase(uvm_phase phase);
@@ -93,7 +102,6 @@ class cfs_apb_coverage extends uvm_ext_coverage#(.VIRTUAL_INTF(cfs_apb_vif), .IT
         wrap_cover_wr_data_0 = uvm_ext_cover_index_wrapper#(`CFS_APB_MAX_DATA_WIDTH)::type_id::create("wrap_cover_wr_data_0", this);
         wrap_cover_wr_data_1 = uvm_ext_cover_index_wrapper#(`CFS_APB_MAX_DATA_WIDTH)::type_id::create("wrap_cover_wr_data_1", this);
         wrap_cover_rd_data_0 = uvm_ext_cover_index_wrapper#(`CFS_APB_MAX_DATA_WIDTH)::type_id::create("wrap_cover_rd_data_0", this);
-        wrap_cover_rd_data_1 = uvm_ext_cover_index_wrapper#(`CFS_APB_MAX_DATA_WIDTH, 12, 20, 31)::type_id::create("wrap_cover_rd_data_1", this);
       endfunction
 
       virtual function void end_of_elaboration_phase(uvm_phase phase);

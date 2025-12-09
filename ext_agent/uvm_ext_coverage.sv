@@ -19,9 +19,9 @@ endclass
 
 //Wrapper over the covergroup which covers indices.
 //The MAX_VALUE parameter is used to determine the maximum value to sample
-class uvm_ext_cover_index_wrapper#(int unsigned MAX_VALUE_PLUS_1 = 16, int unsigned IGNORE_BINS = 0, int unsigned MIN_IGNORE = 0, int unsigned MAX_IGNORE = 0) extends uvm_ext_cover_index_wrapper_base;
+class uvm_ext_cover_index_wrapper#(int unsigned MAX_VALUE_PLUS_1 = 16) extends uvm_ext_cover_index_wrapper_base;
 
-      `uvm_component_param_utils(uvm_ext_cover_index_wrapper#(MAX_VALUE_PLUS_1,IGNORE_BINS,MIN_IGNORE,MAX_IGNORE))
+      `uvm_component_param_utils(uvm_ext_cover_index_wrapper#(MAX_VALUE_PLUS_1))
 
       covergroup cover_index with function sample(int unsigned value);
         option.per_instance = 1;
@@ -29,7 +29,6 @@ class uvm_ext_cover_index_wrapper#(int unsigned MAX_VALUE_PLUS_1 = 16, int unsig
         index : coverpoint value {
           option.comment = "Index";
           bins values[MAX_VALUE_PLUS_1] = {[0:MAX_VALUE_PLUS_1-1]};
-          ignore_bins value[IGNORE_BINS] = {[MIN_IGNORE:MAX_IGNORE]}; 
         }
 
       endgroup
