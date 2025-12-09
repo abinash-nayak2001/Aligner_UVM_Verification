@@ -60,14 +60,15 @@ class vs_alg_rx_fifo_full_test extends cfs_algn_test_base;
 
     reg_read_seq.reg_read(env.virtual_sequencer,"IRQ"); 
 
-    // Cehcking sticky0 behaviour of IRQ.RX_FIFO_FULL by clearing it and
+    // Checking sticky0 behaviour of IRQ.RX_FIFO_FULL and IRQ.TX_FIFO_FULL by clearing it and
     // reading if it sets immediately as STATUS.RX_LVL = 8
     irq_write_seq.irq_write(env.virtual_sequencer,"RX_FIFO_FULL",1'b1);
+    irq_write_seq.irq_write(env.virtual_sequencer,"TX_FIFO_FULL",1'b1);
     reg_read_seq.reg_read(env.virtual_sequencer,"IRQ");
     
     fork
       begin
-        repeat(n_msize_seq-11)
+        repeat(n_msize_seq-11-1)
         begin
           msize_rx_seq.start(env.virtual_sequencer);
           n_bytes_in_buffer = n_bytes_in_buffer + 4;
@@ -79,13 +80,31 @@ class vs_alg_rx_fifo_full_test extends cfs_algn_test_base;
           tx_seq = vs_alg_empty_tx_vseqs::type_id::create("tx_seq");
           tx_seq.start(env.virtual_sequencer);
           n_bytes_in_buffer = n_bytes_in_buffer - env.model.reg_block.CTRL.SIZE.get_mirrored_value();
-        end while(n_bytes_in_buffer != 0); 
+        end while(n_bytes_in_buffer != 4); // Leaving 4 bytes of data in TX_FIFO so that it can be made full again.
       end
     join
+
+    reg_read_seq.reg_read(env.virtual_sequencer,"STATUS"); // Reading STATUS
+
+    repeat(1)
+    begin
+      msize_rx_seq.start(env.virtual_sequencer);
+      n_bytes_in_buffer = n_bytes_in_buffer + 4;
+    end
+
+    #50;
+    reg_read_seq.reg_read(env.virtual_sequencer,"STATUS");
+
+    do begin
+      tx_seq = vs_alg_empty_tx_vseqs::type_id::create("tx_seq");
+      tx_seq.start(env.virtual_sequencer);
+      n_bytes_in_buffer = n_bytes_in_buffer - env.model.reg_block.CTRL.SIZE.get_mirrored_value();
+    end while(n_bytes_in_buffer != 0); 
     
     #50;
-    // Checking if IRQ.RX_FIFO_FULL or IRQ.TX_FIFO_FULL is reset when
-    // STATUS.RX_FIFO_LVL and STATUS.TX_FIFO_LVL respectively becomes 0.
+    // Checking sticky1 behavior of IRQ.RX_FIFO_FULL and IRQ.TX_FIFO_FULL by
+    // reading the those fields and checking if is still set even if
+    // STATUS.RX_LVL and STATUS.TX_LVL is no more 8.
     reg_read_seq.reg_read(env.virtual_sequencer,"STATUS");
     reg_read_seq.reg_read(env.virtual_sequencer,"IRQ");
 

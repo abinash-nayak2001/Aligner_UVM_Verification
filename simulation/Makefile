@@ -99,7 +99,7 @@ run_test7_Questa:
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH7)  -wlf wave_file7.wlf -l test7.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_max_drop_stky1_reg_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov7
 
-run_test8_Questa: 
+run_test8_Questa: clean sv_cmp 
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH8)  -wlf wave_file8.wlf -l test8.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_rx_fifo_full_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov8
 
