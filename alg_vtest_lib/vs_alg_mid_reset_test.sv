@@ -11,7 +11,7 @@ class vs_alg_mid_reset_test extends cfs_algn_test_base;
   virtual cfs_md_if rx_vif;
   virtual cfs_md_if tx_vif;
 	int unsigned n_bytes_in_buffer = 0;
-	int unsigned no_of_reg_trans = 1;
+	int unsigned no_of_reg_trans = 2;
   int unsigned no_of_rx_trans = 5;
 
   function new(string name = "vs_alg_mid_reset_test", uvm_component parent = null);
@@ -35,7 +35,7 @@ class vs_alg_mid_reset_test extends cfs_algn_test_base;
     tx_vif = env.md_tx_agent.agent_config.get_vif();
     #50;
 
-    fork : A
+    fork : A  // Mid-reset check for md_tx interface
       begin
         repeat(2)
           @(posedge tx_vif.valid);
@@ -87,7 +87,7 @@ class vs_alg_mid_reset_test extends cfs_algn_test_base;
 
     #50;
 
-    fork : B
+    fork : B  // Mid-reset check for md_rx interface
       begin
         repeat(2)
           @(posedge rx_vif.valid);
@@ -136,6 +136,32 @@ class vs_alg_mid_reset_test extends cfs_algn_test_base;
       end
     join_any
     disable B;
+
+    fork : C  // Mid-reset check for apb interface
+      begin
+        repeat(2)
+          @(posedge apb_vif.psel);
+        #2;
+        apb_vif.preset_n <= 1'b0;
+
+        repeat(3)
+          @(posedge apb_vif.pclk);
+        apb_vif.preset_n <= 1'b1;
+        n_bytes_in_buffer = 0;
+      end
+
+      begin
+        repeat(no_of_reg_trans)
+        begin
+          reg_config_seq = vs_alg_legal_config_random_vseqs::type_id::create("reg_config_seq");
+          reg_config_seq.block = env.model.reg_block;
+        
+          reg_config_seq.start(env.virtual_sequencer);
+          #50;
+        end
+      end
+    join_any
+    disable C;
     
     phase.phase_done.set_drain_time(this,500);
     phase.drop_objection(this, "TEST_DONE");

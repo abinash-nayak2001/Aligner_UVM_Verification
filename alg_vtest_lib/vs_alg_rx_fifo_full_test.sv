@@ -84,7 +84,7 @@ class vs_alg_rx_fifo_full_test extends cfs_algn_test_base;
       end
     join
 
-    reg_read_seq.reg_read(env.virtual_sequencer,"STATUS"); // Reading STATUS
+    reg_read_seq.reg_read(env.virtual_sequencer,"STATUS"); // Reading STATUS register to see if TX_LVL = 4
 
     repeat(1)
     begin
@@ -93,7 +93,7 @@ class vs_alg_rx_fifo_full_test extends cfs_algn_test_base;
     end
 
     #50;
-    reg_read_seq.reg_read(env.virtual_sequencer,"STATUS");
+    reg_read_seq.reg_read(env.virtual_sequencer,"STATUS");  // Reading STATUS register to see if TX_LVL = 8
 
     do begin
       tx_seq = vs_alg_empty_tx_vseqs::type_id::create("tx_seq");
