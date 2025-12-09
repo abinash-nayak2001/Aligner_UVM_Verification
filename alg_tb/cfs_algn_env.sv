@@ -11,6 +11,9 @@
     
     //Environment configuration class
     cfs_algn_env_config env_config;
+
+    // MD TX agent config handler
+    cfs_md_agent_config_slave#(ALGN_DATA_WIDTH) agent_config;
     
     //APB agent handler
     cfs_apb_agent apb_agent;
@@ -55,9 +58,9 @@
       md_rx_agent = cfs_md_agent_master#(ALGN_DATA_WIDTH)::type_id::create("md_rx_agent", this);
       
       begin
-        cfs_md_agent_config_slave#(ALGN_DATA_WIDTH) agent_config = cfs_md_agent_config_slave#(ALGN_DATA_WIDTH)::type_id::create("agent_config", this);
+        agent_config = cfs_md_agent_config_slave#(ALGN_DATA_WIDTH)::type_id::create("agent_config", this);
         
-        agent_config.set_stuck_threshold(100);
+        agent_config.set_stuck_threshold(500);
         
         uvm_config_db#(uvm_ext_pkg::uvm_ext_agent_config#(.VIRTUAL_INTF(virtual cfs_md_if#(ALGN_DATA_WIDTH))))::set(this, "md_tx_agent", "agent_config", agent_config);
       end

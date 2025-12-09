@@ -36,7 +36,6 @@ class vs_alg_irq_irqen_write_vseqs extends cfs_algn_virtual_sequence_base;
     val = (action == "ENABLE")?1'b1:1'b0;
 
     m_fld.set(val);
-    
     this.start(vseqr);
   endtask
 

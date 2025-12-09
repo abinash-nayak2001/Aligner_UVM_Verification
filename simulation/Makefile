@@ -21,6 +21,7 @@ VSIMBATCH4= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov4;run -all; exi
 VSIMBATCH5= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov5;run -all; exit"
 VSIMBATCH6= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov6;run -all; exit"
 VSIMBATCH7= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov7;run -all; exit"
+VSIMBATCH8= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov8;run -all; exit"
 
 
 help:
@@ -50,6 +51,7 @@ run_test4 : run_test4_$(SIMULATOR)
 run_test5 : run_test5_$(SIMULATOR)
 run_test6 : run_test6_$(SIMULATOR)
 run_test7 : run_test7_$(SIMULATOR)
+run_test8 : run_test8_$(SIMULATOR)
 view_wave1 : view_wave1_$(SIMULATOR)
 view_wave2 : view_wave2_$(SIMULATOR)
 view_wave3 : view_wave3_$(SIMULATOR)
@@ -95,6 +97,10 @@ run_test7_Questa:
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH7)  -wlf wave_file7.wlf -l test7.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_max_drop_stky1_reg_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov7
 
+run_test8_Questa: 
+	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH8)  -wlf wave_file8.wlf -l test8.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_rx_fifo_full_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
+	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov8
+
 view_wave1_Questa:
 	vsim -view wave_file1.wlf
 	
@@ -113,8 +119,8 @@ report_Questa:
 
 regress_Questa: clean_Questa run_test_Questa run_test1_Questa run_test2_Questa run_test3_Questa report_Questa cov_Questa
 
-regress1_Questa: clean_Questa run_test1_Questa run_test2_Questa run_test3_Questa run_test5_Questa run_test7_Questa
-	vcover merge vs_alg_cov vs_alg_cov1 vs_alg_cov2 vs_alg_cov3 vs_alg_cov5 vs_alg_cov7
+regress1_Questa: clean_Questa run_test1_Questa run_test2_Questa run_test3_Questa run_test5_Questa run_test7_Questa run_test8_Questa
+	vcover merge vs_alg_cov vs_alg_cov1 vs_alg_cov2 vs_alg_cov3 vs_alg_cov5 vs_alg_cov7 vs_alg_cov8
 	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov
 
 cov_Questa:

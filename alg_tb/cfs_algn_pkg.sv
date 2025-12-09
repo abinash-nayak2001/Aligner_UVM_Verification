@@ -50,6 +50,8 @@
     `include "vs_alg_clr_reg_vseqs.sv"
     `include "vs_alg_reg_read_vseqs.sv"
     `include "vs_alg_irq_irqen_write_vseqs.sv"
+    `include "vs_alg_ctrl_size_write_vseqs.sv"
+    `include "vs_alg_max_size_rx_vseqs.sv"
 
   endpackage
 

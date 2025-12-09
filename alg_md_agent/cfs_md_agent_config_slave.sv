@@ -11,7 +11,7 @@ class cfs_md_agent_config_slave#(int unsigned DATA_WIDTH = 32) extends cfs_md_ag
       function new(string name = "", uvm_component parent);
         super.new(name, parent);
 
-        ready_at_reset = 1;
+        ready_at_reset = 0;
       endfunction
 
       //Setter for field ready_at_reset

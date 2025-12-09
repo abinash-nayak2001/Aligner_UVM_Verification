@@ -37,12 +37,12 @@ add wave -noupdate -group ALGN_IF /top/algn_if/rx_fifo_pop
 add wave -noupdate -group ALGN_IF /top/algn_if/tx_fifo_push
 add wave -noupdate -group ALGN_IF /top/algn_if/tx_fifo_pop
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {685 ns} 0}
+WaveRestoreCursors {{Cursor 1} {185 ns} 0}
 quietly wave cursor active 1
-configure wave -namecolwidth 200
+configure wave -namecolwidth 152
 configure wave -valuecolwidth 85
 configure wave -justifyvalue left
-configure wave -signalnamewidth 0
+configure wave -signalnamewidth 1
 configure wave -snapdistance 10
 configure wave -datasetprefix 0
 configure wave -rowmargin 4
@@ -53,4 +53,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {1519 ns}
+WaveRestoreZoom {0 ns} {1488 ns}

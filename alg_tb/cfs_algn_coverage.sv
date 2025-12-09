@@ -26,6 +26,7 @@
       ctrl_size : coverpoint info.ctrl_size {
         option.comment = "Value of CTRL.SIZE";
         bins values[]  = {[1:4]};
+        ignore_bins invalid_ctrl_size = {3};
       }
       
       md_offset : coverpoint info.md_offset {

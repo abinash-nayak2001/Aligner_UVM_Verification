@@ -48,7 +48,7 @@ class vs_alg_max_drop_stky0_reg_test extends cfs_algn_test_base;
 
         rx_illegal_seq.start(env.virtual_sequencer);
         total_trans = total_trans + 1;
-        if(total_trans > 255) // Checing the non-cyclic nature of STATUS.CNT_CROP
+        if(total_trans > 255) // Checking the non-cyclic nature of STATUS.CNT_CROP
         begin
           reg_read_seq.reg_read(env.virtual_sequencer,"STATUS","CNT_DROP");
           if(env.model.reg_block.STATUS.CNT_DROP.get_mirrored_value() !== 255)
