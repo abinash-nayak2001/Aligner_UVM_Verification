@@ -22,6 +22,7 @@ VSIMBATCH5= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov5;run -all; exi
 VSIMBATCH6= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov6;run -all; exit"
 VSIMBATCH7= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov7;run -all; exit"
 VSIMBATCH8= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov8;run -all; exit"
+VSIMBATCH9= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov9;run -all; exit"
 
 
 help:
@@ -52,6 +53,7 @@ run_test5 : run_test5_$(SIMULATOR)
 run_test6 : run_test6_$(SIMULATOR)
 run_test7 : run_test7_$(SIMULATOR)
 run_test8 : run_test8_$(SIMULATOR)
+run_test9 : run_test9_$(SIMULATOR)
 view_wave1 : view_wave1_$(SIMULATOR)
 view_wave2 : view_wave2_$(SIMULATOR)
 view_wave3 : view_wave3_$(SIMULATOR)
@@ -100,6 +102,10 @@ run_test7_Questa:
 run_test8_Questa: 
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH8)  -wlf wave_file8.wlf -l test8.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_rx_fifo_full_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov8
+
+run_test9_Questa: clean sv_cmp
+	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH9)  -wlf wave_file9.wlf -l test9.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_rx_fifo_full_stky0_reg_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
+	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov9
 
 view_wave1_Questa:
 	vsim -view wave_file1.wlf
