@@ -7,7 +7,7 @@ class vs_alg_rx_fifo_full_test extends cfs_algn_test_base;
   vs_alg_reg_read_vseqs reg_read_seq;
   vs_alg_irq_irqen_write_vseqs irqen_write_seq;
   vs_alg_irq_irqen_write_vseqs irq_write_seq;
-  vs_alg_ctrl_size_write_vseqs size_write_seq;
+  vs_alg_ctrl_size_write_vseqs ctrl_size_wseq;
   vs_alg_max_size_rx_vseqs msize_rx_seq;
   vs_alg_empty_tx_vseqs tx_seq;
   int unsigned n_msize_seq = 15;
@@ -34,7 +34,7 @@ class vs_alg_rx_fifo_full_test extends cfs_algn_test_base;
     irqen_write_seq = vs_alg_irq_irqen_write_vseqs::type_id::create("irqen_write_seq");
     irq_write_seq = vs_alg_irq_irqen_write_vseqs::type_id::create("irq_write_seq");
     reg_read_seq = vs_alg_reg_read_vseqs::type_id::create("reg_read_seq");
-    size_write_seq = vs_alg_ctrl_size_write_vseqs::type_id::create("size_write_seq");
+    ctrl_size_wseq = vs_alg_ctrl_size_write_vseqs::type_id::create("ctrl_size_wseq");
     msize_rx_seq = vs_alg_max_size_rx_vseqs::type_id::create("msize_rx_seq");
     irqen_write_seq.block = env.model.reg_block;
     irq_write_seq.block = env.model.reg_block;
@@ -44,7 +44,7 @@ class vs_alg_rx_fifo_full_test extends cfs_algn_test_base;
     irqen_write_seq.irqen_write(env.virtual_sequencer,"TX_FIFO_FULL","ENABLE");
     irqen_write_seq.irqen_write(env.virtual_sequencer,"RX_FIFO_EMPTY","ENABLE");
     irqen_write_seq.irqen_write(env.virtual_sequencer,"TX_FIFO_EMPTY","ENABLE");
-    size_write_seq.write_size(env.virtual_sequencer, 3'h1);
+    ctrl_size_wseq.write_size(env.virtual_sequencer, 3'h1);
 
     n_bytes_in_buffer = 0;
     repeat(11)

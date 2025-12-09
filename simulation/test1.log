@@ -1,5 +1,5 @@
 # vsim -cvgperinstance -vopt -voptargs="+acc" -coverage -sva -c -do " log -r /* ;coverage save -onexit vs_alg_cov1;run -all; exit" -wlf wave_file1.wlf -l test1.log -sv_seed 1966936817 work.top "+UVM_TESTNAME=vs_alg_mid_reset_test" "+UVM_MAX_QUIT_COUNT=1" "+UVM_VERBOSITY=UVM_LOW" -f message.f 
-# Start time: 15:02:17 on Dec 09,2025
+# Start time: 17:20:52 on Dec 09,2025
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Warning: ../alg_md_agent/cfs_md_sequencer_base.sv(12): (vopt-2250) Function "get_data_width" has no return value assignment.
 # ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
@@ -72,10 +72,70 @@
 # UVM_INFO @ 0: reporter [MAXQUITSET] '+UVM_MAX_QUIT_COUNT=1' provided on the command line is being applied.
 # ** Warning: (vsim-8556) On evaluating the expression 'binsof(ctrl_size) intersect{ value_list }' inside the select expression of Bin 'ignore_ctrl' of Cross 'all' in Covergroup instance '\/cfs_algn_pkg::cfs_algn_coverage::cover_split ', no matching bins were found. The binsof expression will result in an empty set.
 #    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Error: (vsim-8545) The size is zero/negative for fixed-size array bin 'value' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__1::cover_index '. Skipping bin creation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[0]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__1::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Error: (vsim-8545) The size is zero/negative for fixed-size array bin 'value' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__1::cover_index#2 '. Skipping bin creation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[0]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__1::cover_index#2 ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Error: (vsim-8545) The size is zero/negative for fixed-size array bin 'value' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index '. Skipping bin creation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[0]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Error: (vsim-8545) The size is zero/negative for fixed-size array bin 'value' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index#2 '. Skipping bin creation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[0]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index#2 ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Error: (vsim-8545) The size is zero/negative for fixed-size array bin 'value' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index#3 '. Skipping bin creation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[0]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index#3 ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[20]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__3::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[21]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__3::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[22]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__3::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[23]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__3::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[24]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__3::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[25]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__3::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[26]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__3::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[27]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__3::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[28]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__3::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[29]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__3::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[30]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__3::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[31]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__3::cover_index ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Error: (vsim-8545) The size is zero/negative for fixed-size array bin 'value' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index#4 '. Skipping bin creation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[0]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index#4 ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Error: (vsim-8545) The size is zero/negative for fixed-size array bin 'value' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index#5 '. Skipping bin creation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[0]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index#5 ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Error: (vsim-8545) The size is zero/negative for fixed-size array bin 'value' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index#6 '. Skipping bin creation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[0]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index#6 ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Error: (vsim-8545) The size is zero/negative for fixed-size array bin 'value' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index#7 '. Skipping bin creation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
+# ** Warning: (vsim-8547) After dropping the illegal, ignore or invalid values, the values list associated with fixed-size array sub bin 'values[0]' in Coverpoint 'index' of Covergroup instance '\/uvm_ext_pkg::uvm_ext_cover_index_wrapper::uvm_ext_cover_index_wrapper__2::cover_index#7 ' has converged to empty list. The sub bin will be taken out of coverage calculation.
+#    Time: 0 ns  Iteration: 7  Region: /uvm_pkg::uvm_phase::m_run_phases
 # ** Warning: (vsim-12051) Illegal assignment in cast to class work.cfs_md_pkg::cfs_md_sequencer_base_master from class work.uvm_ext_pkg::uvm_ext_sequencer #(class work.cfs_md_pkg::cfs_md_item_drv_master)
-#    Time: 0 ns  Iteration: 15  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_7fefe426c1c File: ../alg_tb/cfs_algn_env.sv Line: 132
+#    Time: 0 ns  Iteration: 15  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_7fefe426f35 File: ../alg_tb/cfs_algn_env.sv Line: 132
 # ** Warning: (vsim-12051) Illegal assignment in cast to class work.cfs_md_pkg::cfs_md_sequencer_base_slave from class work.uvm_ext_pkg::uvm_ext_sequencer #(class work.cfs_md_pkg::cfs_md_item_drv_slave)
-#    Time: 0 ns  Iteration: 15  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_7fefe426c1c File: ../alg_tb/cfs_algn_env.sv Line: 133
+#    Time: 0 ns  Iteration: 15  Process: /uvm_pkg::uvm_phase::m_run_phases/#FORK#1847_7fefe426f35 File: ../alg_tb/cfs_algn_env.sv Line: 133
 # UVM_INFO @ 0: reporter [UVMTOP] UVM testbench topology:
 # --------------------------------------------------------------------------------
 # Name                          Type                                   Size  Value
@@ -284,7 +344,7 @@
 # UVM_INFO ../alg_apb_agent/cfs_apb_driver.sv(28) @ 685: uvm_test_top.env.apb_agent.driver [ITEM_START] Driving "default_parent_seq.item": dir: CFS_APB_WRITE, addr: 0, data: 301, pre_drive_delay: 4, post_drive_delay: 2
 # UVM_INFO verilog_src/uvm-1.1d/src/base/uvm_objection.svh(1267) @ 1255: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
 # *****NUMBER OF BYTES LEFT IN ALIGNER WHICH ARE NOT TAKEN OUT AFTER TEST_DONE : 0*****
-# ***** OVERALL FUNCTIONAL COVERAGE : 77.90% *****
+# ***** OVERALL FUNCTIONAL COVERAGE : 68.16% *****
 # 
 # --- UVM Report Summary ---
 # 
@@ -308,5 +368,5 @@
 # ** Note: $finish    : /home/abinashnayak/Downloads/questasim/linux_x86_64/../verilog_src/uvm-1.1d/src/base/uvm_root.svh(430)
 #    Time: 1255 ns  Iteration: 53  Instance: /top
 # Saving coverage database on exit...
-# End time: 15:02:23 on Dec 09,2025, Elapsed time: 0:00:06
-# Errors: 0, Warnings: 5
+# End time: 17:20:58 on Dec 09,2025, Elapsed time: 0:00:06
+# Errors: 9, Warnings: 26

@@ -48,6 +48,8 @@ class vs_alg_reg_read_vseqs extends cfs_algn_virtual_sequence_base;
       if(m_fld == null)
         `uvm_fatal("REG_READ",$sformatf("NO SUCH FIELD BY THE NAME %0s",fld_name))
     end
+    else
+      m_fld = null;
 
     this.start(vseqr);
   endtask

@@ -29,6 +29,8 @@ package cfs_algn_test_pkg;
   `include "vs_alg_max_drop_stky0_reg_test.sv"
   `include "vs_alg_max_drop_stky1_reg_test.sv"
   `include "vs_alg_rx_fifo_full_test.sv"
+  `include "vs_alg_rx_fifo_empty_stky0_test.sv"
+  `include "vs_alg_rx_fifo_empty_stky1_test.sv"
 endpackage
 
 `endif

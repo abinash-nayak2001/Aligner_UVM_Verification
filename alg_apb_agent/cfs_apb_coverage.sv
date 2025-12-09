@@ -28,7 +28,7 @@ class cfs_apb_coverage extends uvm_ext_coverage#(.VIRTUAL_INTF(cfs_apb_vif), .IT
 
       //Wrapper over the coverage group covering the indices in the PRDATA signal
       //at which the bit of the PRDATA was 1
-      uvm_ext_cover_index_wrapper#(`CFS_APB_MAX_DATA_WIDTH) wrap_cover_rd_data_1;
+      uvm_ext_cover_index_wrapper#(`CFS_APB_MAX_DATA_WIDTH, 12, 20, 31) wrap_cover_rd_data_1;
 
       `uvm_component_utils(cfs_apb_coverage)
 
@@ -93,7 +93,7 @@ class cfs_apb_coverage extends uvm_ext_coverage#(.VIRTUAL_INTF(cfs_apb_vif), .IT
         wrap_cover_wr_data_0 = uvm_ext_cover_index_wrapper#(`CFS_APB_MAX_DATA_WIDTH)::type_id::create("wrap_cover_wr_data_0", this);
         wrap_cover_wr_data_1 = uvm_ext_cover_index_wrapper#(`CFS_APB_MAX_DATA_WIDTH)::type_id::create("wrap_cover_wr_data_1", this);
         wrap_cover_rd_data_0 = uvm_ext_cover_index_wrapper#(`CFS_APB_MAX_DATA_WIDTH)::type_id::create("wrap_cover_rd_data_0", this);
-        wrap_cover_rd_data_1 = uvm_ext_cover_index_wrapper#(`CFS_APB_MAX_DATA_WIDTH)::type_id::create("wrap_cover_rd_data_1", this);
+        wrap_cover_rd_data_1 = uvm_ext_cover_index_wrapper#(`CFS_APB_MAX_DATA_WIDTH, 12, 20, 31)::type_id::create("wrap_cover_rd_data_1", this);
       endfunction
 
       virtual function void end_of_elaboration_phase(uvm_phase phase);
