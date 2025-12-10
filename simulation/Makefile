@@ -24,6 +24,8 @@ VSIMBATCH7= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov7;run -all; exi
 VSIMBATCH8= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov8;run -all; exit"
 VSIMBATCH9= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov9;run -all; exit"
 VSIMBATCH10= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov10;run -all; exit"
+VSIMBATCH11= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov11;run -all; exit"
+VSIMBATCH12= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov12;run -all; exit"
 
 
 help:
@@ -56,6 +58,8 @@ run_test7 : run_test7_$(SIMULATOR)
 run_test8 : run_test8_$(SIMULATOR)
 run_test9 : run_test9_$(SIMULATOR)
 run_test10 : run_test10_$(SIMULATOR)
+run_test11 : run_test11_$(SIMULATOR)
+run_test12 : run_test12_$(SIMULATOR)
 view_wave1 : view_wave1_$(SIMULATOR)
 view_wave2 : view_wave2_$(SIMULATOR)
 view_wave3 : view_wave3_$(SIMULATOR)
@@ -113,6 +117,14 @@ run_test10_Questa:
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH10)  -wlf wave_file10.wlf -l test10.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_rx_fifo_empty_stky1_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov10
 
+run_test11_Questa:
+	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH11)  -wlf wave_file11.wlf -l test11.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_tx_fifo_empty_stky0_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
+	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov11
+
+run_test12_Questa:
+	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH12)  -wlf wave_file12.wlf -l test12.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_tx_fifo_empty_stky1_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
+	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov12
+
 view_wave1_Questa:
 	vsim -view wave_file1.wlf
 	
@@ -131,8 +143,8 @@ report_Questa:
 
 regress_Questa: clean_Questa run_test_Questa run_test1_Questa run_test2_Questa run_test3_Questa report_Questa cov_Questa
 
-regress1_Questa: clean_Questa run_test1_Questa run_test2_Questa run_test3_Questa run_test5_Questa run_test7_Questa run_test8_Questa run_test10_Questa
-	vcover merge vs_alg_cov vs_alg_cov1 vs_alg_cov2 vs_alg_cov3 vs_alg_cov5 vs_alg_cov7 vs_alg_cov8 vs_alg_cov10
+regress1_Questa: clean_Questa run_test1_Questa run_test2_Questa run_test3_Questa run_test5_Questa run_test7_Questa run_test8_Questa run_test10_Questa run_test12_Questa
+	vcover merge vs_alg_cov vs_alg_cov1 vs_alg_cov2 vs_alg_cov3 vs_alg_cov5 vs_alg_cov7 vs_alg_cov8 vs_alg_cov10 vs_alg_cov12
 	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov
 
 cov_Questa:

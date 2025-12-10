@@ -29,7 +29,7 @@ class vs_alg_rx_fifo_empty_stky0_test extends cfs_algn_test_base;
     irq_write_seq.block = env.model.reg_block;
     reg_read_seq.block = env.model.reg_block;
 
-    irqen_write_seq.irqen_write(env.virtual_sequencer,"RX_FIFO_EMPTY","ENABLE"); // Enabling IRQ.RX_FIFO_EMPTY
+    irqen_write_seq.irqen_write(env.virtual_sequencer,"RX_FIFO_EMPTY","ENABLE"); // Enabling IRQEN.RX_FIFO_EMPTY
     rx_seq.start(env.virtual_sequencer);
     
     #50;

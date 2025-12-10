@@ -34,12 +34,13 @@ class vs_alg_rx_fifo_empty_stky1_test extends vs_alg_rx_fifo_empty_stky0_test;
     reg_read_seq.block = env.model.reg_block;
     irq_write_seq.block = env.model.reg_block;
 
+    #50;
     // Checking if IRQ.RX_FIFO_EMPTY remains 1 even if STATUS.RX_LVL != 0
     reg_read_seq.reg_read(env.virtual_sequencer,"STATUS","RX_LVL");
     reg_read_seq.reg_read(env.virtual_sequencer,"IRQ","RX_FIFO_EMPTY");
 
 
-    // Checking the value of IRQ.RX_FIFO_EMPTY reseting it
+    // Checking the value of IRQ.RX_FIFO_EMPTY after reseting it
     irq_write_seq.irq_write(env.virtual_sequencer,"RX_FIFO_EMPTY",1'b1);
     reg_read_seq.reg_read(env.virtual_sequencer,"IRQ","RX_FIFO_EMPTY");
 
