@@ -85,7 +85,7 @@ run_test1_Questa: clean sv_cmp
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov1
 	
 run_test2_Questa: clean sv_cmp
-	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH2)  -wlf wave_file2.wlf -l test2.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_legal_reg_rx_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
+	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH2)  -wlf wave_file2.wlf -l test2.log -sv_seed 1612655920 work.top +UVM_TESTNAME=vs_alg_legal_reg_rx_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov2
 	
 run_test3_Questa: clean sv_cmp

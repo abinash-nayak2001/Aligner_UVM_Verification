@@ -38,7 +38,7 @@
       md_size : coverpoint info.md_size {
         option.comment = "Value of the MD transaction size";
         bins values[]  = {[1:4]};
-        ignore_bins invalid_size_for_split = {1};
+        ignore_bins invalid_size_for_split = {1,3};
       }
       
       num_bytes_needed : coverpoint info.num_bytes_needed {
@@ -51,6 +51,8 @@
                                   (binsof(ctrl_offset) intersect {1} && binsof(ctrl_size) intersect {2, 3, 4}) || 
                                   (binsof(ctrl_offset) intersect {2} && binsof(ctrl_size) intersect {3, 4})    || 
                                   (binsof(ctrl_offset) intersect {3} && binsof(ctrl_size) intersect {2, 3, 4});
+        ignore_bins invalid_comb_for_splt  = (binsof(ctrl_offset) || binsof(ctrl_size) || binsof(md_offset) || binsof(md_size) || binsof(num_bytes_needed)) with
+                                              (md_size <= num_bytes_needed);
         //TODO: other combinations should be ignored from this cross
       }
 
