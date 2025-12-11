@@ -47,6 +47,7 @@ help:
 	@echo ====================================================================================================================
 
 clean : clean_$(SIMULATOR)
+clean_all : clean_all_$(SIMULATOR)
 sv_cmp : sv_cmp_$(SIMULATOR)
 run_test1 : run_test1_$(SIMULATOR)
 run_test2 : run_test2_$(SIMULATOR)
@@ -69,6 +70,8 @@ report : report_$(SIMULATOR)
 cov : cov_$(SIMULATOR)
 
 regress1 : regress1_$(SIMULATOR)
+regress2 : regress2_$(SIMULATOR)
+regress3 : regress3_$(SIMULATOR)
 
 # ----------------------------- Start of Definitions for Mentor's Questa Specific Targets -------------------------------#
 
@@ -81,47 +84,47 @@ run_test1_Questa: clean sv_cmp
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH1)  -wlf wave_file1.wlf -l test1.log -sv_seed 1966936817 work.top +UVM_TESTNAME=vs_alg_mid_reset_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov1
 	
-run_test2_Questa:
+run_test2_Questa: clean sv_cmp
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH2)  -wlf wave_file2.wlf -l test2.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_legal_reg_rx_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov2
 	
-run_test3_Questa:
+run_test3_Questa: clean sv_cmp
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH3)  -wlf wave_file3.wlf -l test3.log  -sv_seed random  work.top +UVM_TESTNAME=vs_alg_err_reg_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov3
 	
-run_test4_Questa:
+run_test4_Questa: clean sv_cmp
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH4)  -wlf wave_file4.wlf -l test4.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_err_rx_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov4
 	
-run_test5_Questa:
+run_test5_Questa: clean sv_cmp
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH5)  -wlf wave_file5.wlf -l test5.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_clr_cnt_drop_reg_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov5
 
-run_test6_Questa: 
+run_test6_Questa: clean sv_cmp
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH6)  -wlf wave_file6.wlf -l test6.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_max_drop_stky0_reg_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov6
 
-run_test7_Questa: 
+run_test7_Questa: clean sv_cmp
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH7)  -wlf wave_file7.wlf -l test7.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_max_drop_stky1_reg_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov7
 
-run_test8_Questa: 
+run_test8_Questa: clean sv_cmp
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH8)  -wlf wave_file8.wlf -l test8.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_rx_fifo_full_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov8
 
-run_test9_Questa:
+run_test9_Questa: clean sv_cmp
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH9)  -wlf wave_file9.wlf -l test9.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_rx_fifo_empty_stky0_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov9
 
-run_test10_Questa:
+run_test10_Questa: clean sv_cmp
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH10)  -wlf wave_file10.wlf -l test10.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_rx_fifo_empty_stky1_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov10
 
-run_test11_Questa:
+run_test11_Questa: clean sv_cmp
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH11)  -wlf wave_file11.wlf -l test11.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_tx_fifo_empty_stky0_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov11
 
-run_test12_Questa:
+run_test12_Questa: clean sv_cmp
 	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH12)  -wlf wave_file12.wlf -l test12.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_tx_fifo_empty_stky1_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov12
 
@@ -138,20 +141,31 @@ view_wave4_Questa:
 	vsim -view wave_file4.wlf
 
 report_Questa:
-	vcover merge vs_alg_cov vs_alg_cov1 vs_alg_cov2 vs_alg_cov3 vs_alg_cov4
+	vcover merge vs_alg_cov vs_alg_cov_m1 vs_alg_cov_m2 vs_alg_cov_m3
 	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov
 
 regress_Questa: clean_Questa run_test_Questa run_test1_Questa run_test2_Questa run_test3_Questa report_Questa cov_Questa
 
-regress1_Questa: clean_Questa run_test1_Questa run_test2_Questa run_test3_Questa run_test5_Questa run_test7_Questa run_test8_Questa run_test10_Questa run_test12_Questa
-	vcover merge vs_alg_cov vs_alg_cov1 vs_alg_cov2 vs_alg_cov3 vs_alg_cov5 vs_alg_cov7 vs_alg_cov8 vs_alg_cov10 vs_alg_cov12
-	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov
+regress1_Questa: run_test1_Questa run_test2_Questa run_test3_Questa
+	vcover merge vs_alg_cov_m1 vs_alg_cov1 vs_alg_cov2 vs_alg_cov3
+	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov_m1
+
+regress2_Questa: run_test5_Questa run_test7_Questa run_test8_Questa
+	vcover merge vs_alg_cov_m2 v vs_alg_cov5 vs_alg_cov7 vs_alg_cov8
+	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov_m2
+
+regress3_Questa: run_test10_Questa run_test12_Questa
+	vcover merge vs_alg_cov_m3 vs_alg_cov10 vs_alg_cov12
+	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov_m3
 
 cov_Questa:
-	firefox covhtmlreport/index.html&
+	firefox --new-window covhtmlreport/index.html&
 	
 clean_Questa:
-	rm -rf transcript* *log* fcover* covhtml* vs_alg_cov* *.wlf modelsim.ini work
+	rm -rf transcript* *log* fcover* covhtml* *.vstf *.vcd *.wlf modelsim.ini work
 	clear
 
+clean_all_Questa:
+	rm -rf transcript* *log* fcover* covhtml* vs_alg_cov* *.vstf *.vcd *.wlf modelsim.ini work
+	clear
 # ----------------------------- End of Definitions for Mentor's Questa Specific Targets -------------------------------#

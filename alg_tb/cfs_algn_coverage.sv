@@ -32,11 +32,13 @@
       md_offset : coverpoint info.md_offset {
         option.comment = "Value of the MD transaction offset";
         bins values[]  = {[0:3]};
+        ignore_bins invalid_offset_for_split = {3};
       }
       
       md_size : coverpoint info.md_size {
         option.comment = "Value of the MD transaction size";
         bins values[]  = {[1:4]};
+        ignore_bins invalid_size_for_split = {1};
       }
       
       num_bytes_needed : coverpoint info.num_bytes_needed {
