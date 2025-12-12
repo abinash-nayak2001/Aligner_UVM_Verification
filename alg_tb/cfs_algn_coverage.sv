@@ -51,8 +51,12 @@
                                   (binsof(ctrl_offset) intersect {1} && binsof(ctrl_size) intersect {2, 3, 4}) || 
                                   (binsof(ctrl_offset) intersect {2} && binsof(ctrl_size) intersect {3, 4})    || 
                                   (binsof(ctrl_offset) intersect {3} && binsof(ctrl_size) intersect {2, 3, 4});
+
+        ignore_bins invalid_md_comb = (binsof(md_offset) intersect {1} && binsof(md_size) intersect {2, 4}) || 
+                                      (binsof(md_offset) intersect {2} && binsof(md_size) intersect {4}); 
+
         ignore_bins invalid_comb_for_splt  = (binsof(ctrl_offset) || binsof(ctrl_size) || binsof(md_offset) || binsof(md_size) || binsof(num_bytes_needed)) with
-                                              (md_size <= num_bytes_needed);
+                                              ((md_size <= num_bytes_needed) || (ctrl_size < num_bytes_needed));
         //TODO: other combinations should be ignored from this cross
       }
 
