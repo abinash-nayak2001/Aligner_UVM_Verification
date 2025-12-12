@@ -27,6 +27,7 @@ VSIMBATCH10= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov10;run -all; e
 VSIMBATCH11= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov11;run -all; exit"
 VSIMBATCH12= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov12;run -all; exit"
 VSIMBATCH13= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov13;run -all; exit"
+VSIMBATCH14= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov14;run -all; exit"
 
 
 help:
@@ -75,6 +76,7 @@ regress2 : regress2_$(SIMULATOR)
 regress3 : regress3_$(SIMULATOR)
 
 run_covtest1 : run_covtest1_$(SIMULATOR)
+run_covtest2 : run_covtest2_$(SIMULATOR)
 
 # ----------------------------- Start of Definitions for Mentor's Questa Specific Targets -------------------------------#
 
@@ -128,7 +130,7 @@ run_test11_Questa: clean sv_cmp
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov11
 
 run_test12_Questa: clean sv_cmp
-	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH12)  -wlf wave_file12.wlf -l test12.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_tx_fifo_empty_stky1_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
+	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH12)  -wlf wave_file12.wlf -l test12.log -sv_seed 2602086051 work.top +UVM_TESTNAME=vs_alg_tx_fifo_empty_stky1_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov12
 
 run_covtest1_Questa: clean sv_cmp
@@ -137,17 +139,11 @@ run_covtest1_Questa: clean sv_cmp
 	vcover merge vs_alg_cov_mer1 vs_alg_cov vs_alg_cov13
 	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov_mer1
 
-view_wave1_Questa:
-	vsim -view wave_file1.wlf
-	
-view_wave2_Questa:
-	vsim -view wave_file2.wlf
-	
-view_wave3_Questa:
-	vsim -view wave_file3.wlf
-	
-view_wave4_Questa:
-	vsim -view wave_file4.wlf
+run_covtest2_Questa: clean sv_cmp
+	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH14)  -wlf wave_file14.wlf -l test14.log -sv_seed random work.top +UVM_TESTNAME= +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
+	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov14
+	vcover merge vs_alg_cov_mer2 vs_alg_cov_mer1 vs_alg_cov14
+	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov_mer2
 
 report_Questa:
 	vcover merge vs_alg_cov vs_alg_cov_m1 vs_alg_cov_m2 vs_alg_cov_m3

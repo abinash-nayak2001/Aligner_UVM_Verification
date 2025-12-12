@@ -51,9 +51,8 @@ class cfs_apb_coverage extends uvm_ext_coverage#(.VIRTUAL_INTF(cfs_apb_vif), .IT
 
         length : coverpoint item.length {
           option.comment = "Length of the APB access";
-          bins length_eq_2     = {2};
           bins length_eq_3     = {3};
-
+          bins length_eq_4     = {4};
           illegal_bins length_lt_2 = {[$:1]};
         }
 
