@@ -33,22 +33,17 @@ VSIMBATCH16= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov16;run -all; e
 
 
 help:
-	@echo =============================================================================================================
-	@echo "! USAGE   	--  make target                  								!"
-	@echo "! clean   	=>  clean the earlier log and intermediate files.  						!"
-	@echo "! sv_cmp    	=>  Create library and compile the code.           						!"
-	@echo "! run_test	=>  clean, compile & run the simulation for ram_signle_adddr_test in batch mode.		!" 
-	@echo "! run_test1	=>  clean, compile & run the simulation for ram_ten_addr_test in batch mode.			!" 
-	@echo "! run_test2	=>  clean, compile & run the simulation for ram_odd_addr_test in batch mode.			!"
-	@echo "! run_test3	=>  clean, compile & run the simulation for ram_even_addr_test in batch mode.			!" 
-	@echo "! view_wave1 =>  To view the waveform of ram_signle_addr_test	    						!" 
-	@echo "! view_wave2 =>  To view the waveform of ram_ten_addr_test	    						!" 
-	@echo "! view_wave3 =>  To view the waveform of ram_odd_addr_test 	  						!" 
-	@echo "! view_wave4 =>  To view the waveform of ram_even_addr_test    							!" 
-	@echo "! regress    =>  clean, compile and run all testcases in batch mode.		    				!"
-	@echo "! report     =>  To merge coverage reports for all testcases and  convert to html format.			!"
-	@echo "! cov        =>  To open merged coverage report in html format.							!"
-	@echo ====================================================================================================================
+	@echo ==================================================================================================================================
+	@echo "! make target  --  USAGE	 !"
+	@echo "! clean        =>  clean the earlier log and intermediate files excluding coverage databases.  !"
+	@echo "! clean_all    =>  clean the earlier log and intermediate files.	 !"
+	@echo "! sv_cmp       =>  Create library and compile the code.		!"
+	@echo "! run_testn    =>  clean, compile & run the simulation for respective test in batch mode.		!" 
+	@echo "! regressn     =>  clean, compile and run all testcases in regresssion in batch mode alongwith merging on coverage databases		!"
+	@echo "! report       =>  To merge coverage databases for all the regressions and generate report.		!"
+	@echo "! cov          =>  To open coverage report in html format.		!"
+	@echo "! run_covtestn =>  clean, compile & run the simulation for respective coverage test in batch mode.  !"
+	@echo ==================================================================================================================================
 
 clean : clean_$(SIMULATOR)
 clean_all : clean_all_$(SIMULATOR)
@@ -65,11 +60,6 @@ run_test9 : run_test9_$(SIMULATOR)
 run_test10 : run_test10_$(SIMULATOR)
 run_test11 : run_test11_$(SIMULATOR)
 run_test12 : run_test12_$(SIMULATOR)
-view_wave1 : view_wave1_$(SIMULATOR)
-view_wave2 : view_wave2_$(SIMULATOR)
-view_wave3 : view_wave3_$(SIMULATOR)
-view_wave4 : view_wave4_$(SIMULATOR)
-regress : regress_$(SIMULATOR)
 report : report_$(SIMULATOR)
 cov : cov_$(SIMULATOR)
 
@@ -164,8 +154,6 @@ run_covtest4_Questa: clean sv_cmp
 report_Questa:
 	vcover merge vs_alg_cov vs_alg_cov_m1 vs_alg_cov_m2 vs_alg_cov_m3
 	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov
-
-regress_Questa: clean_Questa run_test_Questa run_test1_Questa run_test2_Questa run_test3_Questa report_Questa cov_Questa
 
 regress1_Questa: run_test1_Questa run_test2_Questa run_test3_Questa
 	vcover merge vs_alg_cov_m1 vs_alg_cov1 vs_alg_cov2 vs_alg_cov3
