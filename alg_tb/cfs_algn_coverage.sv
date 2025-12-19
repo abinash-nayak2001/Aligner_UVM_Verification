@@ -26,19 +26,19 @@
       ctrl_size : coverpoint info.ctrl_size {
         option.comment = "Value of CTRL.SIZE";
         bins values[]  = {[1:4]};
-        ignore_bins invalid_ctrl_size = {3};
+        ignore_bins invalid_ctrl_size = {3}; // CTRL.SIZE can never be configured with 3
       }
       
       md_offset : coverpoint info.md_offset {
         option.comment = "Value of the MD transaction offset";
         bins values[]  = {[0:3]};
-        ignore_bins invalid_offset_for_split = {3};
+        ignore_bins invalid_offset_for_split = {3}; // For offset=3, size={1}, which is invalid
       }
       
       md_size : coverpoint info.md_size {
         option.comment = "Value of the MD transaction size";
         bins values[]  = {[1:4]};
-        ignore_bins invalid_size_for_split = {1,3};
+        ignore_bins invalid_size_for_split = {1,3}; // When size={1,3} the condition calling the write method via analysis port will never be true.
       }
       
       num_bytes_needed : coverpoint info.num_bytes_needed {
@@ -52,12 +52,12 @@
                                   (binsof(ctrl_offset) intersect {2} && binsof(ctrl_size) intersect {3, 4})    || 
                                   (binsof(ctrl_offset) intersect {3} && binsof(ctrl_size) intersect {2, 3, 4});
 
+        //TODO: other combinations should be ignored from this cross
         ignore_bins invalid_md_comb = (binsof(md_offset) intersect {1} && binsof(md_size) intersect {2, 4}) || 
                                       (binsof(md_offset) intersect {2} && binsof(md_size) intersect {4}); 
 
         ignore_bins invalid_comb_for_splt  = (binsof(ctrl_offset) || binsof(ctrl_size) || binsof(md_offset) || binsof(md_size) || binsof(num_bytes_needed)) with
                                               ((md_size <= num_bytes_needed) || (ctrl_size < num_bytes_needed));
-        //TODO: other combinations should be ignored from this cross
       }
 
     endgroup

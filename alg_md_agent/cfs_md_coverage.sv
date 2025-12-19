@@ -29,7 +29,7 @@ class cfs_md_coverage#(int unsigned DATA_WIDTH = 32) extends uvm_ext_coverage#(.
         size : coverpoint item.data.size() {
           option.comment = "Size of the MD access";
           bins values[]  = {[1:(DATA_WIDTH/8)]};
-          ignore_bins invalid_size = {3};
+          ignore_bins invalid_size = {3}; // Size 3 is never possible on md_tx interface
         }
 
         response : coverpoint item.response {

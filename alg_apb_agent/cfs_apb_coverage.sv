@@ -34,7 +34,7 @@ class cfs_apb_coverage extends uvm_ext_coverage#(.VIRTUAL_INTF(cfs_apb_vif), .IT
         index : coverpoint value {
           option.comment = "Index";
           bins values[`CFS_APB_MAX_DATA_WIDTH] = {[0:`CFS_APB_MAX_DATA_WIDTH-1]};
-          ignore_bins reserved_fields = {[12:15],[20:31]};
+          ignore_bins reserved_fields = {[12:15],[20:31]}; // Reserved field in the register which can never be 1
         }
       endgroup
 
