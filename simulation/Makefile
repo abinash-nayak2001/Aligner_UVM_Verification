@@ -29,6 +29,7 @@ VSIMBATCH12= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov12;run -all; e
 VSIMBATCH13= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov13;run -all; exit"
 VSIMBATCH14= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov14;run -all; exit"
 VSIMBATCH15= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov15;run -all; exit"
+VSIMBATCH16= -c -do  " log -r /* ;coverage save -onexit vs_alg_cov16;run -all; exit"
 
 
 help:
@@ -79,6 +80,7 @@ regress3 : regress3_$(SIMULATOR)
 run_covtest1 : run_covtest1_$(SIMULATOR)
 run_covtest2 : run_covtest2_$(SIMULATOR)
 run_covtest3 : run_covtest3_$(SIMULATOR)
+run_covtest4 : run_covtest4_$(SIMULATOR)
 
 # ----------------------------- Start of Definitions for Mentor's Questa Specific Targets -------------------------------#
 
@@ -152,6 +154,12 @@ run_covtest3_Questa: clean sv_cmp
 	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov15
 	vcover merge vs_alg_cov_mer3 vs_alg_cov_mer2 vs_alg_cov15
 	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov_mer3
+
+run_covtest4_Questa: clean sv_cmp
+	vsim -cvgperinstance $(VSIMOPT) $(VSIMCOV) $(VSIMBATCH16)  -wlf wave_file16.wlf -l test16.log -sv_seed random work.top +UVM_TESTNAME=vs_alg_rx_len_cov_test +UVM_MAX_QUIT_COUNT=1 +UVM_VERBOSITY=UVM_LOW -f message.f
+	vcover report  -cvg  -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov16
+	vcover merge vs_alg_cov_mer4 vs_alg_cov_mer3 vs_alg_cov16
+	vcover report -cvg -details -nocompactcrossbins -codeAll -assert -directive -html vs_alg_cov_mer4
 
 report_Questa:
 	vcover merge vs_alg_cov vs_alg_cov_m1 vs_alg_cov_m2 vs_alg_cov_m3

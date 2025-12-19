@@ -54,6 +54,8 @@
     `include "vs_alg_max_size_rx_vseqs.sv"
     `include "vs_alg_tx_err_vseqs.sv"
     `include "vs_alg_tx_len_large_vseqs.sv"
+    `include "vs_alg_tx_length_vseqs.sv"
+    `include "vs_alg_rx_len_large_vseqs.sv"
   endpackage
 
 `endif

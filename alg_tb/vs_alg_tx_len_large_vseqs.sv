@@ -20,7 +20,7 @@ class vs_alg_tx_len_large_vseqs extends cfs_algn_virtual_sequence_base;
     seq.item.length_default.constraint_mode(0);
     
     assert(seq.randomize() with {seq.item.length inside {[4:11]};}) else
-      `uvm_error("TX_ERR_SEQ","RANDOMIZATION FAILED")
+      `uvm_error("TX_LAR_SEQ","RANDOMIZATION FAILED")
 		
 		seq.start(p_sequencer.md_tx_sequencer);
   endtask

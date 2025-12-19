@@ -37,6 +37,7 @@ package cfs_algn_test_pkg;
   `include "vs_alg_tx_err_test.sv"
   `include "vs_alg_reg_read_all_test.sv"
   `include "vs_alg_tx_len_cov_test.sv"
+  `include "vs_alg_rx_len_cov_test.sv"
 endpackage
 
 `endif
